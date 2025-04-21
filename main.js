@@ -3,6 +3,7 @@
 
 const LANGS = {
   zh: {
+    flag: '🇹🇼',
     title: '泰拳訓練小程式',
     reaction: '🥊 反應訓練',
     combo: '🧠 組合拳訓練',
@@ -28,6 +29,7 @@ const LANGS = {
     comboInvalid: '請輸入有效組合',
   },
   en: {
+    flag: '🇬🇧',
     title: 'Muay Thai Trainer',
     reaction: '🥊 Reaction Training',
     combo: '🧠 Combo Training',
@@ -51,6 +53,110 @@ const LANGS = {
     voice: 'Voice',
     comboExists: 'Combo already exists',
     comboInvalid: 'Please enter a valid combo',
+  },
+  th: {
+    flag: '🇹🇭',
+    title: 'มวยไทย เทรนเนอร์',
+    reaction: '🥊 ฝึกปฏิกิริยา',
+    combo: '🧠 ฝึกคอมโบ',
+    full: '💥 ทักษะผสม',
+    stop: '⛔ หยุด',
+    comboList: 'จัดการคอมโบ',
+    add: 'เพิ่ม',
+    delete: 'ลบ',
+    comboPlaceholder: 'กรอกคอมโบ เช่น 1 2 3',
+    modalClose: 'ปิด',
+    fists: ['หมัดซ้าย','หมัดขวา','ฮุกซ้าย','ฮุกขวา','อัปเปอร์คัตซ้าย','อัปเปอร์คัตขวา'],
+    legs: ['เตะต่ำซ้าย','เตะต่ำขวา','เตะกลางซ้าย','เตะกลางขวา','เตะสูงซ้าย','เตะสูงขวา'],
+    elbows: ['ศอกขึ้นซ้าย','ศอกขึ้นขวา','ศอกฟันซ้าย','ศอกฟันขวา','ศอกทุบซ้าย','ศอกทุบขวา','ศอกกลับซ้าย','ศอกกลับขวา'],
+    knees: ['เข่าซ้าย','เข่าขวา'],
+    others: ['ป้องกัน','ถีบซ้าย','ถีบขวา','หลอกล่อ'],
+    voiceStatus: 'สถานะเสียง:',
+    voiceInit: 'เริ่มเสียง',
+    interval: 'ช่วงคอมโบ',
+    sec: 'วินาที',
+    lang: 'ภาษา',
+    voice: 'เสียง',
+    comboExists: 'คอมโบนี้มีอยู่แล้ว',
+    comboInvalid: 'กรุณากรอกคอมโบที่ถูกต้อง',
+  },
+  ja: {
+    flag: '🇯🇵',
+    title: 'ムエタイ トレーナー',
+    reaction: '🥊 反応トレーニング',
+    combo: '🧠 コンボ練習',
+    full: '💥 総合技術',
+    stop: '⛔ 停止',
+    comboList: 'コンボ管理',
+    add: '追加',
+    delete: '削除',
+    comboPlaceholder: '例: 1 2 3',
+    modalClose: '閉じる',
+    fists: ['左ジャブ','右ストレート','左フック','右フック','左アッパー','右アッパー'],
+    legs: ['左ロー','右ロー','左ミドル','右ミドル','左ハイ','右ハイ'],
+    elbows: ['左肘上','右肘上','左肘横','右肘横','左肘下','右肘下','左スピン肘','右スピン肘'],
+    knees: ['左膝','右膝'],
+    others: ['ブロック','左前蹴り','右前蹴り','フェイント'],
+    voiceStatus: '音声:',
+    voiceInit: '音声初期化',
+    interval: '間隔',
+    sec: '秒',
+    lang: '言語',
+    voice: '音声',
+    comboExists: 'コンボは既に存在します',
+    comboInvalid: '有効なコンボを入力してください',
+  },
+  es: {
+    flag: '🇪🇸',
+    title: 'Entrenador de Muay Thai',
+    reaction: '🥊 Entrenamiento de reacción',
+    combo: '🧠 Entrenamiento de combo',
+    full: '💥 Técnica mixta',
+    stop: '⛔ Detener',
+    comboList: 'Gestor de combos',
+    add: 'Añadir',
+    delete: 'Eliminar',
+    comboPlaceholder: 'Ejemplo: 1 2 3',
+    modalClose: 'Cerrar',
+    fists: ['Jab','Directo','Gancho izquierdo','Gancho derecho','Uppercut izquierdo','Uppercut derecho'],
+    legs: ['Low kick izq','Low kick der','Middle kick izq','Middle kick der','High kick izq','High kick der'],
+    elbows: ['Codo arriba izq','Codo arriba der','Codo horizontal izq','Codo horizontal der','Codo abajo izq','Codo abajo der','Codo giratorio izq','Codo giratorio der'],
+    knees: ['Rodilla izq','Rodilla der'],
+    others: ['Bloqueo','Teep izq','Teep der','Finta'],
+    voiceStatus: 'Voz:',
+    voiceInit: 'Iniciar voz',
+    interval: 'Intervalo',
+    sec: 'seg',
+    lang: 'Idioma',
+    voice: 'Voz',
+    comboExists: 'El combo ya existe',
+    comboInvalid: 'Introduce un combo válido',
+  },
+  ko: {
+    flag: '🇰🇷',
+    title: '무에타이 트레이너',
+    reaction: '🥊 반응 훈련',
+    combo: '🧠 콤보 훈련',
+    full: '💥 종합 기술',
+    stop: '⛔ 정지',
+    comboList: '콤보 관리',
+    add: '추가',
+    delete: '삭제',
+    comboPlaceholder: '예: 1 2 3',
+    modalClose: '닫기',
+    fists: ['왼손 잽','오른손 스트레이트','왼손 훅','오른손 훅','왼손 어퍼컷','오른손 어퍼컷'],
+    legs: ['왼쪽 로우킥','오른쪽 로우킥','왼쪽 미들킥','오른쪽 미들킥','왼쪽 하이킥','오른쪽 하이킥'],
+    elbows: ['왼쪽 위 팔꿈치','오른쪽 위 팔꿈치','왼쪽 옆 팔꿈치','오른쪽 옆 팔꿈치','왼쪽 아래 팔꿈치','오른쪽 아래 팔꿈치','왼쪽 회전 팔꿈치','오른쪽 회전 팔꿈치'],
+    knees: ['왼쪽 무릎','오른쪽 무릎'],
+    others: ['블록','왼발 앞차기','오른발 앞차기','페인트'],
+    voiceStatus: '음성:',
+    voiceInit: '음성 초기화',
+    interval: '간격',
+    sec: '초',
+    lang: '언어',
+    voice: '음성',
+    comboExists: '콤보가 이미 존재합니다',
+    comboInvalid: '유효한 콤보를 입력하세요',
   }
 };
 
@@ -76,6 +182,16 @@ function renderUI() {
   document.getElementById('combo-input').placeholder = t.comboPlaceholder;
   document.getElementById('combo-add-btn').innerText = t.add;
   document.getElementById('close-combo-modal').innerText = t.modalClose;
+  // 語言選單
+  const langSel = document.getElementById('lang-select');
+  langSel.innerHTML = '';
+  Object.keys(LANGS).forEach(k => {
+    const opt = document.createElement('option');
+    opt.value = k;
+    opt.innerText = `${LANGS[k].flag} ${LANGS[k].title}`;
+    if (k===state.lang) opt.selected = true;
+    langSel.appendChild(opt);
+  });
 }
 
 function renderComboList() {
@@ -132,7 +248,16 @@ function loadVoices() {
   const sel = document.getElementById('voice-select');
   sel.innerHTML = '';
   state.voices.forEach((v,i)=>{
-    if ((state.lang==='zh' && v.lang.indexOf('zh')===0) || (state.lang==='en' && v.lang.indexOf('en')===0)) {
+    const langKey = state.lang;
+    // 只顯示對應語系的語音
+    if (v.lang && (
+      (langKey==='zh' && v.lang.indexOf('zh')===0) ||
+      (langKey==='en' && v.lang.indexOf('en')===0) ||
+      (langKey==='th' && v.lang.indexOf('th')===0) ||
+      (langKey==='ja' && v.lang.indexOf('ja')===0) ||
+      (langKey==='es' && v.lang.indexOf('es')===0) ||
+      (langKey==='ko' && v.lang.indexOf('ko')===0)
+    )) {
       const opt = document.createElement('option');
       opt.value = i;
       opt.text = v.name + ' (' + v.lang + ')';
@@ -142,6 +267,8 @@ function loadVoices() {
   if (sel.options.length>0) {
     sel.selectedIndex = 0;
     state.voice = state.voices[sel.value];
+  } else {
+    state.voice = null;
   }
 }
 document.getElementById('voice-select').onchange = function() {
