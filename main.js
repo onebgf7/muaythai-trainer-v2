@@ -162,12 +162,14 @@ const LANGS = {
 
 let state = {
   lang: 'zh',
-  comboList: [ [1,2], [1,2,3], [2,3,2], [1,2,5,6], [3,4], [1,6,3,2], [2,5,6], [1,4,3] ],
+  fistCombos: [ [1,2], [1,2,3], [2,3,2], [1,2,5,6], [3,4], [1,6,3,2], [2,5,6], [1,4,3] ],
+  fullCombos: [ ['左鉤拳','右高掃'], ['左上肘','右側膝'], ['格檔','右正蹬','假動作'] ],
   voices: [],
   voice: null,
   interval: 5,
   training: null,
   stopFlag: false,
+  comboTab: 'fist' // 'fist' or 'full'
 };
 
 // ========== UI 初始化 ==========
@@ -198,17 +200,30 @@ function renderComboList() {
   const t = LANGS[state.lang];
   const ul = document.getElementById('combo-list');
   ul.innerHTML = '';
-  state.comboList.forEach((combo, idx) => {
+  const combos = state.comboTab === 'fist' ? state.fistCombos : state.fullCombos;
+  combos.forEach((combo, idx) => {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${combo.join(' ')}</span><button data-idx="${idx}">${t.delete}</button>`;
+    li.innerHTML = `<span>${Array.isArray(combo) ? combo.join(' ') : combo}</span><button data-idx="${idx}">${t.delete}</button>`;
     li.querySelector('button').onclick = () => {
-      state.comboList.splice(idx,1);
+      combos.splice(idx,1);
       saveCombos();
       renderComboList();
     };
     ul.appendChild(li);
   });
+  // tab 標示
+  document.getElementById('tab-fist').classList.toggle('active', state.comboTab==='fist');
+  document.getElementById('tab-full').classList.toggle('active', state.comboTab==='full');
 }
+
+document.getElementById('tab-fist').onclick = function(){
+  state.comboTab = 'fist';
+  renderComboList();
+};
+document.getElementById('tab-full').onclick = function(){
+  state.comboTab = 'full';
+  renderComboList();
+};
 
 function openComboModal() {
   document.getElementById('combo-modal').classList.remove('hidden');
@@ -220,26 +235,45 @@ function closeComboModal() {
 function addCombo() {
   const t = LANGS[state.lang];
   const input = document.getElementById('combo-input').value.trim();
-  const arr = input.split(/\s+/).map(Number).filter(n=>n>=1&&n<=6);
-  if (arr.length>0) {
-    if (state.comboList.some(c=>c.length===arr.length && c.every((v,i)=>v===arr[i]))) {
+  if (state.comboTab === 'fist') {
+    const arr = input.split(/\s+/).map(Number).filter(n=>n>=1&&n<=6);
+    if (arr.length>0) {
+      if (state.fistCombos.some(c=>c.length===arr.length && c.every((v,i)=>v===arr[i]))) {
+        alert(t.comboExists);
+        return;
+      }
+      state.fistCombos.push(arr);
+      saveCombos();
+      renderComboList();
+      document.getElementById('combo-input').value = '';
+    } else {
+      alert(t.comboInvalid);
+    }
+  } else {
+    // 綜合組合允許任意字串
+    if (!input) {
+      alert(t.comboInvalid);
+      return;
+    }
+    if (state.fullCombos.some(c=>Array.isArray(c) ? c.join(' ')===input : c===input)) {
       alert(t.comboExists);
       return;
     }
-    state.comboList.push(arr);
+    state.fullCombos.push(input);
     saveCombos();
     renderComboList();
     document.getElementById('combo-input').value = '';
-  } else {
-    alert(t.comboInvalid);
   }
 }
 function saveCombos() {
-  localStorage.setItem('comboList', JSON.stringify(state.comboList));
+  localStorage.setItem('fistCombos', JSON.stringify(state.fistCombos));
+  localStorage.setItem('fullCombos', JSON.stringify(state.fullCombos));
 }
 function loadCombos() {
-  const data = localStorage.getItem('comboList');
-  if (data) state.comboList = JSON.parse(data);
+  const f = localStorage.getItem('fistCombos');
+  if (f) state.fistCombos = JSON.parse(f);
+  const full = localStorage.getItem('fullCombos');
+  if (full) state.fullCombos = JSON.parse(full);
 }
 
 // ========== 語音 =============
@@ -277,12 +311,15 @@ document.getElementById('voice-select').onchange = function() {
 window.speechSynthesis.onvoiceschanged = loadVoices;
 
 function speak(text) {
-  if (!state.voice) return;
+  if (!state.voice) {
+    document.getElementById('display').innerHTML = `<span style='color:#e63c2e;font-size:1em;'>語音不可用</span>`;
+    return;
+  }
   const utter = new SpeechSynthesisUtterance(text);
   utter.voice = state.voice;
   utter.lang = state.voice.lang;
   window.speechSynthesis.speak(utter);
-  document.getElementById('display').innerHTML = `<span style='font-size:2.2em;'>${text}</span>`;
+  document.getElementById('display').innerText = text;
 }
 
 // ========== 訓練邏輯 =========
