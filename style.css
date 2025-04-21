@@ -34,12 +34,15 @@ header {
 .menu button:hover {
   filter: drop-shadow(0 0 16px #ff8a00cc);
 }
-.title {
-  font-size: 1.5em;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 8px #e63c2e44, 0 1px 0 #000;
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 12px;
+  min-width: 48px;
+  min-height: 48px;
 }
+.title { display: none; }
 .lang-voice {
   display: flex;
   gap: 10px;
@@ -50,13 +53,19 @@ header {
   color: #fff;
   border: 1.5px solid #e63c2e;
   border-radius: 12px;
-  padding: 7px 15px;
+  padding: 6px 8px;
   font-size: 1em;
   font-family: inherit;
   box-shadow: 0 2px 12px #e63c2e33;
   outline: none;
   margin-right: 0;
   transition: border 0.2s, box-shadow 0.2s;
+  min-width: 40px;
+  max-width: 110px;
+}
+.lang-select option, #voice-select option {
+  font-size: 1em;
+  padding: 2px 6px;
 }
 .lang-select:focus, #voice-select:focus {
   border: 1.5px solid #ff8a00;

@@ -163,7 +163,19 @@ const LANGS = {
 let state = {
   lang: 'zh',
   fistCombos: [ [1,2], [1,2,3], [2,3,2], [1,2,5,6], [3,4], [1,6,3,2], [2,5,6], [1,4,3] ],
-  fullCombos: [ ['左鉤拳','右高掃'], ['左上肘','右側膝'], ['格檔','右正蹬','假動作'] ],
+  fullCombos: [
+  ['左鉤拳','右高掃'],
+  ['左上肘','右側膝'],
+  ['格檔','右正蹬','假動作'],
+  ['左正蹬','右高掃'],
+  ['左上肘','右膝','左鉤拳'],
+  ['假動作','右中掃','左膝'],
+  ['右正蹬','左高掃','左肘'],
+  ['格檔','左膝','右鉤拳'],
+  ['左高掃','右高掃'],
+  ['左正蹬','右正蹬','左膝'],
+  ['右上肘','左中掃','假動作']
+],
   voices: [],
   voice: null,
   interval: 5,
@@ -190,7 +202,7 @@ function renderUI() {
   Object.keys(LANGS).forEach(k => {
     const opt = document.createElement('option');
     opt.value = k;
-    opt.innerText = `${LANGS[k].flag} ${LANGS[k].title}`;
+    opt.innerText = LANGS[k].flag;
     if (k===state.lang) opt.selected = true;
     langSel.appendChild(opt);
   });
@@ -283,7 +295,6 @@ function loadVoices() {
   sel.innerHTML = '';
   state.voices.forEach((v,i)=>{
     const langKey = state.lang;
-    // 只顯示對應語系的語音
     if (v.lang && (
       (langKey==='zh' && v.lang.indexOf('zh')===0) ||
       (langKey==='en' && v.lang.indexOf('en')===0) ||
@@ -294,7 +305,7 @@ function loadVoices() {
     )) {
       const opt = document.createElement('option');
       opt.value = i;
-      opt.text = v.name + ' (' + v.lang + ')';
+      opt.text = v.name;
       sel.appendChild(opt);
     }
   });
