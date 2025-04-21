@@ -1,3 +1,4 @@
+alert('main.js v20250421 loaded!');
 // Muay Thai Trainer v2
 // 完全重構，無舊邏輯
 
