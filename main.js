@@ -1,6 +1,12 @@
 // Muay Thai Trainer v2
 // 完全重構，無舊邏輯
 
+// 全域 JS 錯誤提示
+window.onerror = function(msg, url, line, col, error) {
+  alert('JS Error: ' + msg + '\n於 ' + line + ':' + col);
+  return false;
+};
+
 const LANGS = {
   zh: {
     flag: '🇹🇼',
@@ -275,10 +281,20 @@ function saveCombos() {
   localStorage.setItem('fullCombos', JSON.stringify(state.fullCombos));
 }
 function loadCombos() {
-  const f = localStorage.getItem('fistCombos');
-  if (f) state.fistCombos = JSON.parse(f);
-  const full = localStorage.getItem('fullCombos');
-  if (full) state.fullCombos = JSON.parse(full);
+  try {
+    const f = localStorage.getItem('fistCombos');
+    if (f) state.fistCombos = JSON.parse(f);
+  } catch(e) {
+    state.fistCombos = [];
+    console.error('fistCombos 載入錯誤', e);
+  }
+  try {
+    const full = localStorage.getItem('fullCombos');
+    if (full) state.fullCombos = JSON.parse(full);
+  } catch(e) {
+    state.fullCombos = [];
+    console.error('fullCombos 載入錯誤', e);
+  }
 }
 
 // ========== 語音 =============
@@ -378,32 +394,55 @@ function startFullComboTraining() {
 
 // ========== 綁定事件 =========
 document.addEventListener('DOMContentLoaded',()=>{
-  renderUI();
-  loadCombos();
-  loadVoices();
-  renderComboList();
-  document.getElementById('lang-select').onchange = function() {
+  // 初始化順序
+  try {
+    renderUI();
+    loadCombos();
+    loadVoices();
+    renderComboList();
+  } catch(e) {
+    alert('初始化錯誤: '+e.message);
+    console.error(e);
+  }
+  // 語言切換
+  const langSel = document.getElementById('lang-select');
+  if (langSel) langSel.onchange = function() {
     state.lang = this.value;
     renderUI();
     renderComboList();
     loadVoices();
+    console.log('切換語言', state.lang);
   };
-  document.getElementById('open-combo-list').onclick = openComboModal;
-  document.getElementById('close-combo-modal').onclick = closeComboModal;
-  document.getElementById('combo-add-btn').onclick = addCombo;
-  document.getElementById('reaction-btn').onclick = startReactionTraining;
-  document.getElementById('combo-btn').onclick = startComboTraining;
-  document.getElementById('fullcombo-btn').onclick = startFullComboTraining;
-  document.getElementById('stop-btn').onclick = stopTraining;
-  document.getElementById('combo-input').addEventListener('keydown',e=>{
-    if(e.key==='Enter') addCombo();
+  // 按鈕事件
+  const btns = [
+    ['open-combo-list', openComboModal],
+    ['close-combo-modal', closeComboModal],
+    ['combo-add-btn', addCombo],
+    ['reaction-btn', startReactionTraining],
+    ['combo-btn', startComboTraining],
+    ['fullcombo-btn', startFullComboTraining],
+    ['stop-btn', stopTraining],
+    ['tab-fist', ()=>{ state.comboTab='fist'; renderComboList(); console.log('切換tab fist'); }],
+    ['tab-full', ()=>{ state.comboTab='full'; renderComboList(); console.log('切換tab full'); }]
+  ];
+  btns.forEach(([id, fn])=>{
+    const el = document.getElementById(id);
+    if (el) {
+      el.onclick = function(){
+        console.log('點擊', id);
+        fn();
+      };
+    } else {
+      console.warn('找不到元素', id);
+    }
   });
-  document.getElementById('tab-fist').onclick = function(){
-    state.comboTab = 'fist';
-    renderComboList();
-  };
-  document.getElementById('tab-full').onclick = function(){
-    state.comboTab = 'full';
-    renderComboList();
-  };
+  // 輸入 Enter 新增
+  const comboInput = document.getElementById('combo-input');
+  if (comboInput) comboInput.addEventListener('keydown',e=>{
+    if(e.key==='Enter') {
+      console.log('輸入 Enter 新增');
+      addCombo();
+    }
+  });
 });
+
