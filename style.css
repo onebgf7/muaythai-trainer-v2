@@ -1,11 +1,265 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', 'Noto Sans TC', 'Arial', sans-serif;
-  background: linear-gradient(135deg, #181818 60%, #2d1c41 100%);
+  background: linear-gradient(135deg, #181c24 60%, #1a237e 100%);
   color: #fff;
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+:root {
+  --main-red: #e63c2e;
+  --main-blue: #1a237e;
+  --main-blue-light: #283593;
+  --main-bg: #181c24;
+  --main-border: #e63c2e;
+  --main-radius: 1.4em;
+}
+
+header {
+  background: linear-gradient(90deg, var(--main-blue) 80%, var(--main-red) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 32px var(--main-blue-light), 0 1px 4px #0009;
+  border-bottom: 2px solid var(--main-red);
+}
+.menu button {
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: var(--main-red);
+  cursor: pointer;
+  filter: drop-shadow(0 0 6px var(--main-blue-light));
+  transition: filter 0.2s;
+}
+.menu button:hover {
+  filter: drop-shadow(0 0 16px var(--main-red));
+  color: var(--main-blue);
+}
+.logo svg {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+@media (max-width: 600px) {
+  .logo svg {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.title {
+  color: var(--main-red);
+  font-weight: bold;
+  font-size: 1.3em;
+  letter-spacing: 0.09em;
+}
+.lang-voice {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.lang-select, #voice-select {
+  background: var(--main-blue-light);
+  color: #fff;
+  border: 1.5px solid var(--main-red);
+  border-radius: 12px;
+  padding: 6px 8px;
+  font-size: 1em;
+  font-family: inherit;
+  box-shadow: 0 2px 12px var(--main-red)33;
+  outline: none;
+  margin-right: 0;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 40px;
+  max-width: 110px;
+}
+.lang-select:focus, #voice-select:focus {
+  border: 1.5px solid var(--main-blue);
+  box-shadow: 0 0 16px var(--main-blue-light);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 38px;
+}
+.display-area {
+  min-height: 2.2em;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 1.2em;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-shadow: 0 2px 8px var(--main-blue-light), 0 1px 2px var(--main-red)22;
+  animation: fadeIn 0.5s;
+}
+
+.combo-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+.combo-tab {
+  background: var(--main-blue-light);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.07em;
+  padding: 8px 22px;
+  border-radius: 18px 18px 0 0;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+.combo-tab.active {
+  background: var(--main-red);
+  color: #fff;
+  border-bottom: 3px solid var(--main-blue);
+}
+
+/* Combo builder 美化區 */
+#builder-techniques {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 0;
+  min-height: 48px;
+}
+.builder-tech-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.9em 2em;
+  border: none;
+  font-size: 1.1em;
+  margin-bottom: 14px;
+  margin-right: 14px;
+  min-width: 90px;
+  max-width: 90vw;
+  cursor: pointer;
+  box-shadow: 0 6px 16px var(--main-blue-light)77, 0 2px 8px var(--main-red)aa;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .16s, transform .13s, box-shadow .18s;
+  outline: none;
+  position: relative;
+  user-select: none;
+}
+.builder-tech-btn:hover, .builder-tech-btn.active {
+  background: linear-gradient(100deg, var(--main-red) 0%, var(--main-blue-light) 100%);
+  color: #fff;
+  transform: scale(1.09);
+  box-shadow: 0 10px 32px var(--main-red)cc, 0 2px 12px var(--main-blue-light)99;
+  z-index: 2;
+}
+
+.builder-action-btn {
+  background: linear-gradient(100deg, var(--main-red) 0%, var(--main-blue-light) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.8em 2em;
+  border: none;
+  font-size: 1.08em;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  box-shadow: 0 4px 18px var(--main-blue-light)88, 0 2px 8px var(--main-red)88;
+  transition: background .18s, transform .13s, box-shadow .16s;
+  outline: none;
+  margin-bottom: 10px;
+  margin-right: 0;
+  cursor: pointer;
+  user-select: none;
+  max-width: 90vw;
+}
+#builder-add-btn, #builder-clear-btn, #close-builder-modal {
+  font-size: 1.08em;
+  padding: 0.8em 2em;
+  border-radius: var(--main-radius);
+}
+.builder-action-btn:hover, .builder-action-btn:focus {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 8px 24px var(--main-blue-light)cc, 0 2px 10px var(--main-red)99;
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .builder-tech-btn, .builder-action-btn {
+    font-size: 0.98em;
+    padding: 0.7em 1.1em;
+    min-width: 70px;
+    margin-right: 8px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .builder-tech-btn, .builder-action-btn {
+    font-size: 0.92em;
+    padding: 0.6em 0.6em;
+    min-width: 60px;
+    max-width: 95vw;
+    margin-right: 4px;
+    margin-bottom: 8px;
+  }
+}
+
+.modal-content {
+  background: var(--main-bg);
+  border-radius: 1.6em;
+  border: 2.5px solid var(--main-blue-light);
+  box-shadow: 0 8px 40px var(--main-blue-light)33, 0 2px 12px var(--main-red)44;
+  color: #fff;
+}
+.builder-section-title, #builder-title, #combo-list-title {
+  color: var(--main-red);
+  font-weight: bold;
+  letter-spacing: 0.09em;
+}
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 420px;
+}
+.button-group button {
+  padding: 0.9em 0;
+  font-size: 1.08em;
+  border-radius: var(--main-radius);
+  border: none;
+  background: linear-gradient(90deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px var(--main-blue-light)22, 0 1px 4px #0004;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.12s, box-shadow 0.2s;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  filter: drop-shadow(0 0 6px var(--main-red)99);
+  max-width: 90vw;
+}
+.button-group button:hover {
+  background: linear-gradient(90deg, var(--main-red) 0%, var(--main-blue-light) 100%);
+  transform: scale(1.03);
+}
+.button-group .danger {
+  background: var(--main-red);
+  color: #fff;
+  font-weight: bold;
+}
+
 
 /* Combo builder 美化區 */
 #builder-techniques {
