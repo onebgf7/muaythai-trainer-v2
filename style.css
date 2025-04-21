@@ -509,6 +509,84 @@ main {
   background: rgba(30, 10, 20, 0.99);
   padding: 30px 24px 18px 24px;
 }
+
+/* 組合建立器美化增強 */
+.builder-modal-enhanced {
+  box-shadow: 0 8px 40px #ff8a0033, 0 2px 12px #e63c2e44;
+  border-radius: 36px;
+  border: 2.5px solid #ff8a00cc;
+  background: linear-gradient(135deg, #1e0a14 80%, #2d1c41 100%);
+}
+.builder-flex-enhanced {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.builder-section {
+  flex: 1;
+  min-width: 140px;
+  background: rgba(30,20,40,0.55);
+  border-radius: 18px;
+  padding: 18px 10px 14px 10px;
+  margin-bottom: 0;
+  box-shadow: 0 2px 14px #e63c2e22;
+  border: 1.5px solid #ff8a0011;
+}
+.builder-section-title {
+  font-weight: bold;
+  font-size: 1.15em;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  color: #ff8a00;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.builder-divider {
+  border: none;
+  border-top: 2px dashed #e63c2e77;
+  margin: 18px 0 16px 0;
+  width: 100%;
+  opacity: 0.8;
+}
+.builder-btn-row {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.builder-action-btn {
+  background: linear-gradient(100deg, #ff8a00 0%, #e63c2e 100%);
+  color: #fff;
+  border-radius: 2em;
+  padding: 0.85em 2.1em;
+  border: none;
+  font-size: 1.15em;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 24px #e63c2e33, 0 1px 2px #ff8a0033;
+  transition: background .18s, transform .13s, box-shadow .16s;
+  outline: none;
+  margin-bottom: 8px;
+  margin-right: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.builder-action-btn:hover, .builder-action-btn:focus {
+  background: linear-gradient(100deg, #e63c2e 0%, #ff8a00 100%);
+  color: #fff;
+  transform: scale(1.10);
+  box-shadow: 0 12px 32px #ff8a00cc, 0 2px 12px #e63c2e99;
+  z-index: 2;
+}
+@media (max-width: 600px) {
+  .builder-flex-enhanced { flex-direction: column; gap: 12px; }
+  .builder-btn-row { flex-direction: column; gap: 10px; }
+  .builder-section { padding: 12px 4px 10px 4px; }
+}
+
 #builder-modal h2 {
   letter-spacing: 0.16em;
   font-size: 1.7em;
