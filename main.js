@@ -222,6 +222,7 @@ function renderComboList() {
   const combos = state.comboTab === 'fist' ? state.fistCombos : state.fullCombos;
   combos.forEach((combo, idx) => {
     const li = document.createElement('li');
+    li.className = 'combo-card';
     // 順序圓圈
     const indexDiv = document.createElement('div');
     indexDiv.className = 'combo-index';
@@ -240,7 +241,9 @@ function renderComboList() {
     const actionsDiv = document.createElement('div');
     actionsDiv.className = 'combo-actions';
     const delBtn = document.createElement('button');
-    delBtn.innerText = t.delete;
+    delBtn.className = 'combo-delete';
+    delBtn.innerHTML = '✕';
+    delBtn.title = t.delete;
     delBtn.onclick = function() {
       if (state.comboTab === 'fist') state.fistCombos.splice(idx,1);
       else state.fullCombos.splice(idx,1);
