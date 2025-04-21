@@ -114,10 +114,11 @@ main {
   border-bottom: 2.5px solid #ff8a00;
 }
 #combo-list {
-  width: 100%;
-  margin: 0 0 12px 0;
-  padding: 0;
   list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  max-height: 40vh;
+  overflow-y: auto;
 }
 #combo-list li {
   background: #23232b;

@@ -365,13 +365,12 @@ function startReactionTraining() {
 function startComboTraining() {
   stopTraining();
   state.stopFlag = false;
-  let idx = 0;
   function next() {
     if (state.stopFlag) return;
     if (!state.fistCombos || state.fistCombos.length === 0) return;
-    const combo = state.fistCombos[idx % state.fistCombos.length];
+    const idx = Math.floor(Math.random() * state.fistCombos.length);
+    const combo = state.fistCombos[idx];
     speak(Array.isArray(combo) ? combo.join(' ') : combo);
-    idx++;
     state.training = setTimeout(next, state.interval*1000);
   }
   next();
@@ -380,13 +379,12 @@ function startComboTraining() {
 function startFullComboTraining() {
   stopTraining();
   state.stopFlag = false;
-  let idx = 0;
   function next() {
     if (state.stopFlag) return;
     if (!state.fullCombos || state.fullCombos.length === 0) return;
-    const combo = state.fullCombos[idx % state.fullCombos.length];
+    const idx = Math.floor(Math.random() * state.fullCombos.length);
+    const combo = state.fullCombos[idx];
     speak(Array.isArray(combo) ? combo.join(' ') : combo);
-    idx++;
     state.training = setTimeout(next, state.interval*1000);
   }
   next();
