@@ -1,5 +1,4 @@
-alert('main.js v20250421 loaded!');
-console.log('main.js loaded, document.readyState:', document.readyState);
+
 // Muay Thai Trainer v2
 // 完全重構，無舊邏輯
 
@@ -415,7 +414,7 @@ function startFullComboTraining() {
 
 // ========== 綁定事件 =========
 document.addEventListener('DOMContentLoaded',()=>{
-  console.log('DOMContentLoaded fired!');
+
   // 按鈕active觸感（手機/桌機）
   function addActiveTouch(selector) {
     document.querySelectorAll(selector).forEach(btn=>{
@@ -520,7 +519,7 @@ const MUAY_THAI_TECHNIQUES = [
 ];
 
 function openBuilderModal() {
-  alert('openBuilderModal called!');
+
   document.getElementById('builder-modal').classList.remove('hidden');
   builderCombo = [];
   renderBuilderTechniques();
@@ -531,7 +530,7 @@ function closeBuilderModal() {
   builderCombo = [];
 }
 function renderBuilderTechniques() {
-  alert('renderBuilderTechniques called!');
+
   const area = document.getElementById('builder-techniques');
   area.innerHTML = '';
   MUAY_THAI_TECHNIQUES.forEach((item, i) => {
