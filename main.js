@@ -228,14 +228,7 @@ function renderComboList() {
   document.getElementById('tab-full').classList.toggle('active', state.comboTab==='full');
 }
 
-document.getElementById('tab-fist').onclick = function(){
-  state.comboTab = 'fist';
-  renderComboList();
-};
-document.getElementById('tab-full').onclick = function(){
-  state.comboTab = 'full';
-  renderComboList();
-};
+
 
 function openComboModal() {
   document.getElementById('combo-modal').classList.remove('hidden');
@@ -359,9 +352,9 @@ function startComboTraining() {
   let idx = 0;
   function next() {
     if (state.stopFlag) return;
-    if (state.comboList.length===0) return;
-    const combo = state.comboList[idx % state.comboList.length];
-    speak(combo.join(' '));
+    if (!state.fistCombos || state.fistCombos.length === 0) return;
+    const combo = state.fistCombos[idx % state.fistCombos.length];
+    speak(Array.isArray(combo) ? combo.join(' ') : combo);
     idx++;
     state.training = setTimeout(next, state.interval*1000);
   }
@@ -371,25 +364,13 @@ function startComboTraining() {
 function startFullComboTraining() {
   stopTraining();
   state.stopFlag = false;
-  const t = LANGS[state.lang];
-  const pool = [
-    ...t.fists, ...t.legs, ...t.elbows, ...t.knees, ...t.others
-  ];
-  function randomMoves() {
-    const n = Math.floor(Math.random()*4)+2;
-    let arr = [];
-    let p = [...pool];
-    for (let i=0;i<n;i++) {
-      const idx = Math.floor(Math.random()*p.length);
-      arr.push(p[idx]);
-      p.splice(idx,1);
-    }
-    return arr;
-  }
+  let idx = 0;
   function next() {
     if (state.stopFlag) return;
-    const moves = randomMoves();
-    speak(moves.join('、'));
+    if (!state.fullCombos || state.fullCombos.length === 0) return;
+    const combo = state.fullCombos[idx % state.fullCombos.length];
+    speak(Array.isArray(combo) ? combo.join(' ') : combo);
+    idx++;
     state.training = setTimeout(next, state.interval*1000);
   }
   next();
@@ -399,8 +380,8 @@ function startFullComboTraining() {
 document.addEventListener('DOMContentLoaded',()=>{
   renderUI();
   loadCombos();
-  renderComboList();
   loadVoices();
+  renderComboList();
   document.getElementById('lang-select').onchange = function() {
     state.lang = this.value;
     renderUI();
@@ -417,4 +398,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('combo-input').addEventListener('keydown',e=>{
     if(e.key==='Enter') addCombo();
   });
+  document.getElementById('tab-fist').onclick = function(){
+    state.comboTab = 'fist';
+    renderComboList();
+  };
+  document.getElementById('tab-full').onclick = function(){
+    state.comboTab = 'full';
+    renderComboList();
+  };
 });
