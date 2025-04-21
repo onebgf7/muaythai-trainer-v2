@@ -1599,3 +1599,54 @@ main {
   .modal-content { min-width: 90vw; }
   .button-group { max-width: 95vw; }
 }
+/* 目前組合顯示區塊 RWD 極小化優化 */
+.builder-combo-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(90deg, #181c24 70%, #1a237e 100%);
+  border-radius: 1.2em;
+  padding: 0.35em 0.7em;
+  margin-bottom: 8px;
+  font-size: 1em;
+  min-height: 36px;
+  max-width: 98vw;
+  box-shadow: 0 2px 8px #1a237e44;
+}
+
+.builder-combo-item .combo-delete {
+  background: linear-gradient(100deg, #e63c2e 60%, #ff7043 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.1em;
+  height: 2.1em;
+  font-size: 1em;
+  margin: 0 0.4em 0 0.4em;
+  box-shadow: 0 2px 8px #e63c2e44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.16s, box-shadow 0.16s, transform 0.12s;
+  padding: 0;
+}
+.builder-combo-item .combo-delete:hover {
+  background: linear-gradient(100deg, #ff7043 0%, #e63c2e 100%);
+  color: #fff;
+  transform: scale(1.12);
+  box-shadow: 0 4px 12px #e63c2ecc;
+}
+
+@media (max-width: 600px) {
+  .builder-combo-item {
+    font-size: 0.97em;
+    padding: 0.2em 0.3em;
+    min-height: 28px;
+  }
+  .builder-combo-item .combo-delete {
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 0.97em;
+    margin: 0 0.2em 0 0.2em;
+  }
+}
