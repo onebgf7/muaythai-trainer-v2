@@ -62,10 +62,20 @@
 <div id="builder-modal" class="modal hidden">
   <div class="modal-content">
     <h2 id="builder-title">組合建立器</h2>
-    <div id="builder-list"></div>
+    <div id="builder-flex" style="display:flex; gap:12px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:120px;">
+        <div style="font-weight:bold; margin-bottom:4px;">所有招式</div>
+        <div id="builder-techniques"></div>
+      </div>
+      <div style="flex:1; min-width:120px;">
+        <div style="font-weight:bold; margin-bottom:4px;">目前組合</div>
+        <div id="builder-combo" class="builder-combo-list"></div>
+      </div>
+    </div>
     <div style="margin:12px 0;">
       <button id="builder-add-btn">建立組合</button>
       <button id="close-builder-modal">關閉</button>
+      <button id="builder-clear-btn">清空</button>
     </div>
   </div>
 </div>

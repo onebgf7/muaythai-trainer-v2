@@ -318,32 +318,69 @@ main {
   max-width: 95vw;
   box-sizing: border-box;
 }
-#builder-list {
+#builder-techniques {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  max-height: 38vh;
+  max-height: 36vh;
   overflow-y: auto;
   margin-bottom: 8px;
 }
-.builder-item {
+.builder-tech-btn {
   background: #23232b;
   color: #fff;
   border-radius: 8px;
-  padding: 6px 10px;
+  padding: 7px 13px;
+  border: none;
+  font-size: 1.08em;
+  margin-bottom: 2px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.builder-tech-btn:hover {
+  background: #e63c2e;
+  color: #fff;
+}
+.builder-combo-list {
+  min-height: 38px;
+  background: #19191e;
+  border-radius: 8px;
+  padding: 6px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 36vh;
+  overflow-y: auto;
+}
+.builder-combo-item {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 1.05em;
-  cursor: pointer;
-  user-select: none;
-}
-.builder-item input[type=checkbox] {
-  accent-color: #e63c2e;
+  background: #23232b;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 9px 6px 7px;
+  font-size: 1.08em;
   margin-right: 2px;
+  user-select: none;
+  cursor: grab;
+  position: relative;
+}
+.builder-combo-item .combo-delete {
+  margin-left: 6px;
+  color: #e63c2e;
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+.builder-combo-item .combo-drag {
+  margin-left: 2px;
+  color: #888;
+  cursor: grab;
+  font-size: 1.1em;
 }
 #builder-modal .modal-content {
-  max-width: 420px;
+  max-width: 480px;
 }
 #combo-list {
   width: 100%;

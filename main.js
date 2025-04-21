@@ -485,48 +485,92 @@ const MUAY_THAI_TECHNIQUES = [
 
 function openBuilderModal() {
   document.getElementById('builder-modal').classList.remove('hidden');
-  renderBuilderList();
+  builderCombo = [];
+  renderBuilderTechniques();
+  renderBuilderCombo();
 }
 function closeBuilderModal() {
   document.getElementById('builder-modal').classList.add('hidden');
-  clearBuilderSelection();
+  builderCombo = [];
 }
-function renderBuilderList() {
+function renderBuilderTechniques() {
   const lang = state.lang;
-  const list = document.getElementById('builder-list');
-  list.innerHTML = '';
+  const area = document.getElementById('builder-techniques');
+  area.innerHTML = '';
   MUAY_THAI_TECHNIQUES.forEach((item, idx) => {
-    const div = document.createElement('div');
-    div.className = 'builder-item';
-    div.draggable = true;
-    div.dataset.idx = idx;
-    div.innerHTML = `<input type="checkbox" id="builder-cb-${idx}" data-idx="${idx}" /> <label for="builder-cb-${idx}">${item[lang]||item.zh}</label>`;
-    list.appendChild(div);
+    const btn = document.createElement('button');
+    btn.className = 'builder-tech-btn';
+    btn.type = 'button';
+    btn.innerText = item[lang]||item.zh;
+    btn.onclick = function() {
+      builderCombo.push(idx);
+      renderBuilderCombo();
+    };
+    area.appendChild(btn);
   });
-  enableBuilderDragSort();
 }
-function clearBuilderSelection() {
-  const list = document.getElementById('builder-list');
-  if (!list) return;
-  [...list.querySelectorAll('input[type=checkbox]')].forEach(cb=>cb.checked=false);
+function renderBuilderCombo() {
+  const lang = state.lang;
+  const area = document.getElementById('builder-combo');
+  area.innerHTML = '';
+  builderCombo.forEach((idx, i) => {
+    const item = MUAY_THAI_TECHNIQUES[idx];
+    const div = document.createElement('div');
+    div.className = 'builder-combo-item';
+    div.draggable = true;
+    div.dataset.index = i;
+    div.innerHTML = `${item[lang]||item.zh} <button class="combo-delete" title="刪除" type="button">✕</button><span class="combo-drag" title="拖曳排序">≡</span>`;
+    // 刪除按鈕
+    div.querySelector('.combo-delete').onclick = function(e) {
+      builderCombo.splice(i, 1);
+      renderBuilderCombo();
+      e.stopPropagation();
+    };
+    area.appendChild(div);
+  });
+  enableBuilderComboDrag();
+}
+function enableBuilderComboDrag() {
+  const area = document.getElementById('builder-combo');
+  let dragIdx = null;
+  area.querySelectorAll('.builder-combo-item').forEach((el, idx) => {
+    el.addEventListener('dragstart', function(e) {
+      dragIdx = idx;
+      this.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    el.addEventListener('dragend', function(e) {
+      this.classList.remove('dragging');
+    });
+    el.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    el.addEventListener('drop', function(e) {
+      e.stopPropagation();
+      const tgtIdx = idx;
+      if (dragIdx !== null && dragIdx !== tgtIdx) {
+        const moved = builderCombo.splice(dragIdx, 1)[0];
+        builderCombo.splice(tgtIdx, 0, moved);
+        renderBuilderCombo();
+      }
+      dragIdx = null;
+      return false;
+    });
+  });
 }
 function addBuilderCombo() {
-  const list = document.getElementById('builder-list');
-  const checked = [...list.querySelectorAll('input[type=checkbox]:checked')];
-  if (checked.length===0) {
+  if (builderCombo.length === 0) {
     alert('請至少選擇一個招式');
     return;
   }
-  // 依照畫面順序組合
-  const combo = checked.map(cb=>{
-    const idx = parseInt(cb.dataset.idx);
+  // 依照 builderCombo 順序組合
+  const combo = builderCombo.map(idx => {
     const item = MUAY_THAI_TECHNIQUES[idx];
-    // 拳組合存數字，其餘存字串
     if (['1','2','3','4','5','6'].includes(item.key)) return Number(item.key);
     return item[state.lang]||item.zh;
   });
   if (state.comboTab==='fist') {
-    // 拳組合需全為數字
     if (!combo.every(n=>typeof n==='number')) {
       alert('拳組合只能選擇 1~6 號拳法');
       return;
@@ -537,7 +581,6 @@ function addBuilderCombo() {
     }
     state.fistCombos.push(combo);
   } else {
-    // 綜合組合允許任意
     if (state.fullCombos.some(c=>Array.isArray(c)?c.join(' ')==combo.join(' '):c===combo.join(' '))) {
       alert('組合已存在');
       return;
@@ -548,47 +591,15 @@ function addBuilderCombo() {
   renderComboList();
   closeBuilderModal();
 }
-// 拖曳排序（僅針對勾選的項目）
-function enableBuilderDragSort() {
-  const list = document.getElementById('builder-list');
-  let dragSrcEl = null;
-  list.querySelectorAll('.builder-item').forEach(item=>{
-    item.addEventListener('dragstart',function(e){
-      dragSrcEl = this;
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/html', this.innerHTML);
-      this.classList.add('dragging');
-    });
-    item.addEventListener('dragend',function(e){
-      this.classList.remove('dragging');
-    });
-    item.addEventListener('dragover',function(e){
-      e.preventDefault();
-      return false;
-    });
-    item.addEventListener('drop',function(e){
-      e.stopPropagation();
-      if (dragSrcEl !== this) {
-        // 僅移動勾選的項目
-        const srcCb = dragSrcEl.querySelector('input[type=checkbox]');
-        const tgtCb = this.querySelector('input[type=checkbox]');
-        if (srcCb.checked && tgtCb.checked) {
-          // 交換位置
-          const listArr = Array.from(list.children);
-          const srcIdx = listArr.indexOf(dragSrcEl);
-          const tgtIdx = listArr.indexOf(this);
-          if (srcIdx>-1 && tgtIdx>-1) {
-            if (srcIdx < tgtIdx) {
-              list.insertBefore(dragSrcEl, this.nextSibling);
-            } else {
-              list.insertBefore(dragSrcEl, this);
-            }
-          }
-        }
-      }
-      return false;
-    });
-  });
+// 清空組合
+function clearBuilderCombo() {
+  builderCombo = [];
+  renderBuilderCombo();
 }
+// 綁定清空按鈕
+window.addEventListener('DOMContentLoaded',()=>{
+  const btn = document.getElementById('builder-clear-btn');
+  if (btn) btn.onclick = clearBuilderCombo;
+});
 
-
+// ... (其他程式碼保持不變)
