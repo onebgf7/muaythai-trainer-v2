@@ -421,7 +421,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     ['fullcombo-btn', startFullComboTraining],
     ['stop-btn', stopTraining],
     ['tab-fist', ()=>{ state.comboTab='fist'; renderComboList(); console.log('切換tab fist'); }],
-    ['tab-full', ()=>{ state.comboTab='full'; renderComboList(); console.log('切換tab full'); }]
+    ['tab-full', ()=>{ state.comboTab='full'; renderComboList(); console.log('切換tab full'); }],
+    // 組合建立器
+    ['open-builder-btn', openBuilderModal],
+    ['close-builder-modal', closeBuilderModal],
+    ['builder-add-btn', addBuilderCombo]
   ];
   btns.forEach(([id, fn])=>{
     const el = document.getElementById(id);
@@ -443,4 +447,148 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   });
 });
+
+// ========== 組合建立器 =============
+const MUAY_THAI_TECHNIQUES = [
+  // 拳法
+  { key: '1', zh: '前手直拳', en: 'Jab', th: 'หมัดหน้า' },
+  { key: '2', zh: '後手直拳', en: 'Cross', th: 'หมัดหลัง' },
+  { key: '3', zh: '左鉤拳', en: 'Left Hook', th: 'หมัดฮุกซ้าย' },
+  { key: '4', zh: '右鉤拳', en: 'Right Hook', th: 'หมัดฮุกขวา' },
+  { key: '5', zh: '左上勾拳', en: 'Left Uppercut', th: 'หมัดอัปเปอร์คัตซ้าย' },
+  { key: '6', zh: '右上勾拳', en: 'Right Uppercut', th: 'หมัดอัปเปอร์คัตขวา' },
+  // 腿法
+  { key: '左低掃', zh: '左低掃', en: 'Left Low Kick', th: 'เตะต่ำซ้าย' },
+  { key: '右低掃', zh: '右低掃', en: 'Right Low Kick', th: 'เตะต่ำขวา' },
+  { key: '左中掃', zh: '左中掃', en: 'Left Middle Kick', th: 'เตะกลางซ้าย' },
+  { key: '右中掃', zh: '右中掃', en: 'Right Middle Kick', th: 'เตะกลางขวา' },
+  { key: '左高掃', zh: '左高掃', en: 'Left High Kick', th: 'เตะสูงซ้าย' },
+  { key: '右高掃', zh: '右高掃', en: 'Right High Kick', th: 'เตะสูงขวา' },
+  { key: '左正蹬', zh: '左正蹬', en: 'Left Teep', th: 'ถีบซ้าย' },
+  { key: '右正蹬', zh: '右正蹬', en: 'Right Teep', th: 'ถีบขวา' },
+  // 肘法
+  { key: '左上肘', zh: '左上肘', en: 'Left Up Elbow', th: 'ศอกขึ้นซ้าย' },
+  { key: '右上肘', zh: '右上肘', en: 'Right Up Elbow', th: 'ศอกขึ้นขวา' },
+  { key: '左平肘', zh: '左平肘', en: 'Left Horizontal Elbow', th: 'ศอกฟันซ้าย' },
+  { key: '右平肘', zh: '右平肘', en: 'Right Horizontal Elbow', th: 'ศอกฟันขวา' },
+  { key: '左砍肘', zh: '左砍肘', en: 'Left Down Elbow', th: 'ศอกทุบซ้าย' },
+  { key: '右砍肘', zh: '右砍肘', en: 'Right Down Elbow', th: 'ศอกทุบขวา' },
+  { key: '左轉身肘', zh: '左轉身肘', en: 'Left Spinning Elbow', th: 'ศอกกลับซ้าย' },
+  { key: '右轉身肘', zh: '右轉身肘', en: 'Right Spinning Elbow', th: 'ศอกกลับขวา' },
+  // 膝法
+  { key: '左膝', zh: '左膝', en: 'Left Knee', th: 'เข่าซ้าย' },
+  { key: '右膝', zh: '右膝', en: 'Right Knee', th: 'เข่าขวา' },
+  // 其他
+  { key: '假動作', zh: '假動作', en: 'Feint', th: 'หลอกล่อ' },
+  { key: '格檔', zh: '格檔', en: 'Block', th: 'ป้องกัน' }
+];
+
+function openBuilderModal() {
+  document.getElementById('builder-modal').classList.remove('hidden');
+  renderBuilderList();
+}
+function closeBuilderModal() {
+  document.getElementById('builder-modal').classList.add('hidden');
+  clearBuilderSelection();
+}
+function renderBuilderList() {
+  const lang = state.lang;
+  const list = document.getElementById('builder-list');
+  list.innerHTML = '';
+  MUAY_THAI_TECHNIQUES.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'builder-item';
+    div.draggable = true;
+    div.dataset.idx = idx;
+    div.innerHTML = `<input type="checkbox" id="builder-cb-${idx}" data-idx="${idx}" /> <label for="builder-cb-${idx}">${item[lang]||item.zh}</label>`;
+    list.appendChild(div);
+  });
+  enableBuilderDragSort();
+}
+function clearBuilderSelection() {
+  const list = document.getElementById('builder-list');
+  if (!list) return;
+  [...list.querySelectorAll('input[type=checkbox]')].forEach(cb=>cb.checked=false);
+}
+function addBuilderCombo() {
+  const list = document.getElementById('builder-list');
+  const checked = [...list.querySelectorAll('input[type=checkbox]:checked')];
+  if (checked.length===0) {
+    alert('請至少選擇一個招式');
+    return;
+  }
+  // 依照畫面順序組合
+  const combo = checked.map(cb=>{
+    const idx = parseInt(cb.dataset.idx);
+    const item = MUAY_THAI_TECHNIQUES[idx];
+    // 拳組合存數字，其餘存字串
+    if (['1','2','3','4','5','6'].includes(item.key)) return Number(item.key);
+    return item[state.lang]||item.zh;
+  });
+  if (state.comboTab==='fist') {
+    // 拳組合需全為數字
+    if (!combo.every(n=>typeof n==='number')) {
+      alert('拳組合只能選擇 1~6 號拳法');
+      return;
+    }
+    if (state.fistCombos.some(c=>c.length===combo.length && c.every((v,i)=>v===combo[i]))) {
+      alert('組合已存在');
+      return;
+    }
+    state.fistCombos.push(combo);
+  } else {
+    // 綜合組合允許任意
+    if (state.fullCombos.some(c=>Array.isArray(c)?c.join(' ')==combo.join(' '):c===combo.join(' '))) {
+      alert('組合已存在');
+      return;
+    }
+    state.fullCombos.push(combo);
+  }
+  saveCombos();
+  renderComboList();
+  closeBuilderModal();
+}
+// 拖曳排序（僅針對勾選的項目）
+function enableBuilderDragSort() {
+  const list = document.getElementById('builder-list');
+  let dragSrcEl = null;
+  list.querySelectorAll('.builder-item').forEach(item=>{
+    item.addEventListener('dragstart',function(e){
+      dragSrcEl = this;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
+      this.classList.add('dragging');
+    });
+    item.addEventListener('dragend',function(e){
+      this.classList.remove('dragging');
+    });
+    item.addEventListener('dragover',function(e){
+      e.preventDefault();
+      return false;
+    });
+    item.addEventListener('drop',function(e){
+      e.stopPropagation();
+      if (dragSrcEl !== this) {
+        // 僅移動勾選的項目
+        const srcCb = dragSrcEl.querySelector('input[type=checkbox]');
+        const tgtCb = this.querySelector('input[type=checkbox]');
+        if (srcCb.checked && tgtCb.checked) {
+          // 交換位置
+          const listArr = Array.from(list.children);
+          const srcIdx = listArr.indexOf(dragSrcEl);
+          const tgtIdx = listArr.indexOf(this);
+          if (srcIdx>-1 && tgtIdx>-1) {
+            if (srcIdx < tgtIdx) {
+              list.insertBefore(dragSrcEl, this.nextSibling);
+            } else {
+              list.insertBefore(dragSrcEl, this);
+            }
+          }
+        }
+      }
+      return false;
+    });
+  });
+}
+
 

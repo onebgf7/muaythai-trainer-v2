@@ -313,20 +313,37 @@ main {
   background: rgba(0,0,0,0.85);
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-.modal.hidden { display: none; }
-.modal-content {
-  background: #222;
-  padding: 32px 18px 18px 18px;
   border-radius: 18px;
-  min-width: 300px;
+  min-width: 260px;
   max-width: 95vw;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  box-sizing: border-box;
+}
+#builder-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 38vh;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+.builder-item {
+  background: #23232b;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
   align-items: center;
+  gap: 6px;
+  font-size: 1.05em;
+  cursor: pointer;
+  user-select: none;
+}
+.builder-item input[type=checkbox] {
+  accent-color: #e63c2e;
+  margin-right: 2px;
+}
+#builder-modal .modal-content {
+  max-width: 420px;
 }
 #combo-list {
   width: 100%;
