@@ -157,6 +157,27 @@ main {
   background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
   color: #fff;
   border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
   padding: 0.7em 1.6em;
   border: none;
   font-size: 1em;
@@ -187,6 +208,27 @@ main {
 }
 @media (max-width: 900px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.93em;
     padding: 0.5em 1em;
     min-width: 55px;
@@ -196,6 +238,27 @@ main {
 }
 @media (max-width: 600px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.89em;
     padding: 0.4em 0.5em;
     min-width: 38px;
@@ -342,6 +405,27 @@ main {
   background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
   color: #fff;
   border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
   padding: 0.7em 1.6em;
   border: none;
   font-size: 1em;
@@ -372,6 +456,27 @@ main {
 }
 @media (max-width: 900px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.93em;
     padding: 0.5em 1em;
     min-width: 55px;
@@ -381,6 +486,27 @@ main {
 }
 @media (max-width: 600px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.89em;
     padding: 0.4em 0.5em;
     min-width: 38px;
@@ -449,13 +575,13 @@ main {
   background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
   color: #fff;
   border-radius: var(--main-radius);
-  padding: 0.7em 1.6em;
+  padding: 0.45em 0.8em;
   border: none;
-  font-size: 1em;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  min-width: 70px;
-  max-width: 90vw;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
   cursor: pointer;
   box-shadow: 0 2px 8px var(--main-blue-light)77;
   font-weight: bold;
@@ -464,48 +590,9 @@ main {
   outline: none;
   user-select: none;
   display: inline-block;
-}
-.builder-tech-btn:hover, .builder-action-btn:hover, #builder-add-btn:hover, #builder-clear-btn:hover, #close-builder-modal:hover, .combo-tab:hover, .combo-actions button:hover, .button-group button:hover, .close-modal:hover, #combo-add-btn:hover {
-  background: linear-gradient(100deg, var(--main-red) 0%, var(--main-blue-light) 100%);
-  color: #fff;
-  transform: scale(1.06);
-  box-shadow: 0 4px 16px var(--main-red)cc;
-  z-index: 2;
-}
-.combo-tab.active, .button-group .danger, .combo-actions button.danger {
-  background: var(--main-red) !important;
-  color: #fff !important;
-  border-bottom: 2.5px solid var(--main-blue);
-}
-@media (max-width: 900px) {
-  .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
-    font-size: 0.93em;
-    padding: 0.5em 1em;
-    min-width: 55px;
-    margin-right: 6px;
-    margin-bottom: 7px;
-  }
-}
-@media (max-width: 600px) {
-  .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
-    font-size: 0.89em;
-    padding: 0.4em 0.5em;
-    min-width: 38px;
-    max-width: 95vw;
-    margin-right: 3px;
-    margin-bottom: 4px;
-  }
+  word-break: break-all;
 }
 
-    font-size: 1.14em;
-    padding: 1.1em 1.5em;
-    min-width: 110px;
-    margin-right: 10px;
-    margin-bottom: 14px;
-  }
-}
-@media (max-width: 600px) {
-  .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
   background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
   color: #fff;
   border-radius: var(--main-radius);
@@ -539,6 +626,27 @@ main {
 }
 @media (max-width: 900px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.93em;
     padding: 0.5em 1em;
     min-width: 55px;
@@ -548,6 +656,150 @@ main {
 }
 @media (max-width: 600px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+    font-size: 0.89em;
+    padding: 0.4em 0.5em;
+    min-width: 38px;
+    max-width: 95vw;
+    margin-right: 3px;
+    margin-bottom: 4px;
+  }
+}
+
+    font-size: 1.14em;
+    padding: 1.1em 1.5em;
+    min-width: 110px;
+    margin-right: 10px;
+    margin-bottom: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.7em 1.6em;
+  border: none;
+  font-size: 1em;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  min-width: 70px;
+  max-width: 90vw;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+}
+.builder-tech-btn:hover, .builder-action-btn:hover, #builder-add-btn:hover, #builder-clear-btn:hover, #close-builder-modal:hover, .combo-tab:hover, .combo-actions button:hover, .button-group button:hover, .close-modal:hover, #combo-add-btn:hover {
+  background: linear-gradient(100deg, var(--main-red) 0%, var(--main-blue-light) 100%);
+  color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 4px 16px var(--main-red)cc;
+  z-index: 2;
+}
+.combo-tab.active, .button-group .danger, .combo-actions button.danger {
+  background: var(--main-red) !important;
+  color: #fff !important;
+  border-bottom: 2.5px solid var(--main-blue);
+}
+@media (max-width: 900px) {
+  .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+    font-size: 0.93em;
+    padding: 0.5em 1em;
+    min-width: 55px;
+    margin-right: 6px;
+    margin-bottom: 7px;
+  }
+}
+@media (max-width: 600px) {
+  .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.89em;
     padding: 0.4em 0.5em;
     min-width: 38px;
@@ -968,6 +1220,27 @@ main {
   background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
   color: #fff;
   border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
   padding: 0.7em 1.6em;
   border: none;
   font-size: 1em;
@@ -998,6 +1271,27 @@ main {
 }
 @media (max-width: 900px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.93em;
     padding: 0.5em 1em;
     min-width: 55px;
@@ -1007,6 +1301,27 @@ main {
 }
 @media (max-width: 600px) {
   .builder-tech-btn, .builder-action-btn, #builder-add-btn, #builder-clear-btn, #close-builder-modal, .combo-tab, .combo-actions button, .button-group button, .close-modal, #combo-add-btn {
+  background: linear-gradient(100deg, var(--main-blue-light) 0%, var(--main-red) 100%);
+  color: #fff;
+  border-radius: var(--main-radius);
+  padding: 0.45em 0.8em;
+  border: none;
+  font-size: 0.98em;
+  margin-bottom: 7px;
+  margin-right: 7px;
+  min-width: 0;
+  max-width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--main-blue-light)77;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  transition: background .15s, transform .13s, box-shadow .16s;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
     font-size: 0.89em;
     padding: 0.4em 0.5em;
     min-width: 38px;
