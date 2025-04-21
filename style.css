@@ -1117,7 +1117,7 @@ main {
   padding: 6px 4px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 10px 12px;
   max-height: 36vh;
   overflow-y: auto;
 }
@@ -1127,12 +1127,13 @@ main {
   justify-content: flex-start;
   background: linear-gradient(90deg, #181c24 70%, #1a237e 100%);
   border-radius: 1.2em;
-  padding: 0.35em 0.7em;
-  margin-bottom: 8px;
+  padding: 0.38em 1.1em;
+  margin: 0 8px 8px 0;
   font-size: 1em;
   min-height: 36px;
   max-width: 98vw;
   box-shadow: 0 2px 8px #1a237e44;
+  white-space: nowrap;
 }
 .builder-combo-item .combo-delete {
   background: linear-gradient(100deg, #e63c2e 60%, #ff7043 100%);
@@ -1192,7 +1193,8 @@ main {
 @media (max-width: 600px) {
   header { padding: 8px 6px; }
   button, .builder-tech-btn, .builder-action-btn { font-size: 0.89em; padding: 0.32em 0.45em; }
-  .builder-combo-item { font-size: 0.97em; padding: 0.2em 0.3em; min-height: 28px; }
+  .builder-combo-list { gap: 8px 6px; }
+  .builder-combo-item { font-size: 0.97em; padding: 0.33em 0.7em; min-height: 28px; margin: 0 6px 8px 0; white-space: nowrap; }
   .builder-combo-item .combo-delete { width: 1.5em; height: 1.5em; font-size: 0.97em; margin: 0 0.2em 0 0.2em; }
   .modal-content { min-width: 90vw; }
 }
