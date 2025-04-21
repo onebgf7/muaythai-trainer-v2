@@ -413,6 +413,18 @@ function startFullComboTraining() {
 
 // ========== 綁定事件 =========
 document.addEventListener('DOMContentLoaded',()=>{
+  // 按鈕active觸感（手機/桌機）
+  function addActiveTouch(selector) {
+    document.querySelectorAll(selector).forEach(btn=>{
+      btn.addEventListener('touchstart',()=>btn.classList.add('active'),{passive:true});
+      btn.addEventListener('touchend',()=>btn.classList.remove('active'));
+      btn.addEventListener('mousedown',()=>btn.classList.add('active'));
+      btn.addEventListener('mouseup',()=>btn.classList.remove('active'));
+      btn.addEventListener('mouseleave',()=>btn.classList.remove('active'));
+      btn.addEventListener('touchcancel',()=>btn.classList.remove('active'));
+    });
+  }
+  addActiveTouch('.button-group button, .builder-tech-btn, .builder-combo-item .combo-delete');
   // 初始化順序
   try {
     renderUI();
@@ -515,18 +527,23 @@ function closeBuilderModal() {
   builderCombo = [];
 }
 function renderBuilderTechniques() {
-  const lang = state.lang;
   const area = document.getElementById('builder-techniques');
   area.innerHTML = '';
-  MUAY_THAI_TECHNIQUES.forEach((item, idx) => {
+  MUAY_THAI_TECHNIQUES.forEach((item, i) => {
     const btn = document.createElement('button');
     btn.className = 'builder-tech-btn';
-    btn.type = 'button';
-    btn.innerText = item[lang]||item.zh;
+    btn.innerText = item[state.lang] || item.zh;
     btn.onclick = function() {
-      builderCombo.push(idx);
+      builderCombo.push(i);
       renderBuilderCombo();
     };
+    // 支援active觸感
+    btn.addEventListener('touchstart',()=>btn.classList.add('active'),{passive:true});
+    btn.addEventListener('touchend',()=>btn.classList.remove('active'));
+    btn.addEventListener('mousedown',()=>btn.classList.add('active'));
+    btn.addEventListener('mouseup',()=>btn.classList.remove('active'));
+    btn.addEventListener('mouseleave',()=>btn.classList.remove('active'));
+    btn.addEventListener('touchcancel',()=>btn.classList.remove('active'));
     area.appendChild(btn);
   });
 }
@@ -542,11 +559,20 @@ function renderBuilderCombo() {
     div.dataset.index = i;
     div.innerHTML = `${item[lang]||item.zh} <button class="combo-delete" title="刪除" type="button">✕</button><span class="combo-drag" title="拖曳排序">≡</span>`;
     // 刪除按鈕
-    div.querySelector('.combo-delete').onclick = function(e) {
+    const delBtn = div.querySelector('.combo-delete');
+    delBtn.onclick = function(e) {
       builderCombo.splice(i, 1);
       renderBuilderCombo();
       e.stopPropagation();
     };
+    // 支援active觸感
+    delBtn.addEventListener('touchstart',()=>delBtn.classList.add('active'),{passive:true});
+    delBtn.addEventListener('touchend',()=>delBtn.classList.remove('active'));
+    delBtn.addEventListener('mousedown',()=>delBtn.classList.add('active'));
+    delBtn.addEventListener('mouseup',()=>delBtn.classList.remove('active'));
+    delBtn.addEventListener('mouseleave',()=>delBtn.classList.remove('active'));
+    delBtn.addEventListener('touchcancel',()=>delBtn.classList.remove('active'));
+
     area.appendChild(div);
   });
   enableBuilderComboDrag();
