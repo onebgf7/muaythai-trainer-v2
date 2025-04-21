@@ -528,6 +528,7 @@ function closeBuilderModal() {
   builderCombo = [];
 }
 function renderBuilderTechniques() {
+  alert('renderBuilderTechniques called!');
   const area = document.getElementById('builder-techniques');
   area.innerHTML = '';
   MUAY_THAI_TECHNIQUES.forEach((item, i) => {
