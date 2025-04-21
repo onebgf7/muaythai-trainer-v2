@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muay Thai Trainer</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e63c2e">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="menu">
+      <button id="open-combo-list" aria-label="組合管理">☰</button>
+    </div>
+    <div class="title" id="app-title">Muay Thai Trainer</div>
+    <div class="lang-voice">
+      <select id="lang-select">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+      </select>
+      <select id="voice-select"></select>
+    </div>
+  </header>
+  <main>
+    <div id="display" class="display-area"></div>
+    <div class="button-group">
+      <button id="reaction-btn">🥊 反應訓練</button>
+      <button id="combo-btn">🧠 組合拳訓練</button>
+      <button id="fullcombo-btn">💥 綜合技術訓練</button>
+      <button id="stop-btn" class="danger">⛔ 停止</button>
+    </div>
+  </main>
+  <!-- 組合管理 Modal -->
+  <div id="combo-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="combo-list-title">組合管理</h2>
+      <ul id="combo-list"></ul>
+      <div class="combo-add">
+        <input id="combo-input" placeholder="輸入組合 例如：1 2 3" />
+        <button id="combo-add-btn">新增</button>
+      </div>
+      <button class="close-modal" id="close-combo-modal">關閉</button>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
