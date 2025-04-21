@@ -193,7 +193,7 @@ let state = {
 // ========== UI 初始化 ==========
 function renderUI() {
   const t = LANGS[state.lang];
-  document.getElementById('app-title').innerText = t.title;
+  // 已移除 app-title，不再設置標題
   document.getElementById('reaction-btn').innerText = t.reaction;
   document.getElementById('combo-btn').innerText = t.combo;
   document.getElementById('fullcombo-btn').innerText = t.full;
