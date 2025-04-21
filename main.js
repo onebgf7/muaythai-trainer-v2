@@ -221,12 +221,33 @@ function renderComboList() {
   const combos = state.comboTab === 'fist' ? state.fistCombos : state.fullCombos;
   combos.forEach((combo, idx) => {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${Array.isArray(combo) ? combo.join(' ') : combo}</span><button data-idx="${idx}">${t.delete}</button>`;
-    li.querySelector('button').onclick = () => {
-      combos.splice(idx,1);
+    // 順序圓圈
+    const indexDiv = document.createElement('div');
+    indexDiv.className = 'combo-index';
+    indexDiv.innerText = idx + 1;
+    li.appendChild(indexDiv);
+    // 組合內容
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'combo-content';
+    if (Array.isArray(combo)) {
+      contentDiv.innerText = combo.join(' ');
+    } else {
+      contentDiv.innerText = combo;
+    }
+    li.appendChild(contentDiv);
+    // 刪除按鈕區
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'combo-actions';
+    const delBtn = document.createElement('button');
+    delBtn.innerText = t.delete;
+    delBtn.onclick = function() {
+      if (state.comboTab === 'fist') state.fistCombos.splice(idx,1);
+      else state.fullCombos.splice(idx,1);
       saveCombos();
       renderComboList();
     };
+    actionsDiv.appendChild(delBtn);
+    li.appendChild(actionsDiv);
     ul.appendChild(li);
   });
   // tab 標示
@@ -234,7 +255,7 @@ function renderComboList() {
   document.getElementById('tab-full').classList.toggle('active', state.comboTab==='full');
 }
 
-
+// ... (rest of the code remains the same)
 
 function openComboModal() {
   document.getElementById('combo-modal').classList.remove('hidden');
