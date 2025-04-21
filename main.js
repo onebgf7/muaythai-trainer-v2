@@ -518,6 +518,7 @@ const MUAY_THAI_TECHNIQUES = [
 ];
 
 function openBuilderModal() {
+  alert('openBuilderModal called!');
   document.getElementById('builder-modal').classList.remove('hidden');
   builderCombo = [];
   renderBuilderTechniques();
