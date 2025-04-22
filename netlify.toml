@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+  command = ""
+
+[functions]
+  directory = "netlify-functions"
+
+[dev]
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "18"
