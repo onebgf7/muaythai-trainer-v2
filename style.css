@@ -220,13 +220,35 @@ main {
   padding: 0;
 }
 
-.button-group, .combo-add {
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: stretch;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 340px;
+}
+.combo-add {
   display: flex;
   gap: 18px;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
+
+.button-group button {
+  width: 100%;
+  font-size: 1.3em;
+  padding: 0.9em 0;
+  border-radius: 1.2em;
+  min-width: 120px;
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 
 .builder-btn-row {
   display: flex;

@@ -567,7 +567,7 @@ function renderBuilderCombo() {
     } else {
       label = item[lang] || item.zh;
     }
-    if (!label || label === '.' || label.trim() === '') return; // 避免空白或異常
+    if (!label || label === '.' || label === undefined || label === null || label.trim() === '') return; // 避免空白或異常
     const div = document.createElement('div');
     div.className = 'builder-combo-item combo-card';
     div.draggable = true;
