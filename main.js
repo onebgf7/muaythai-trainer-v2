@@ -534,13 +534,17 @@ function closeBuilderModal() {
   builderCombo = [];
 }
 function renderBuilderTechniques() {
-
   const area = document.getElementById('builder-techniques');
   area.innerHTML = '';
   MUAY_THAI_TECHNIQUES.forEach((item, i) => {
     const btn = document.createElement('button');
     btn.className = 'builder-tech-btn';
-    btn.innerText = item[state.lang] || item.zh;
+    // 拳法（前6個）顯示數字，其餘顯示語言名稱
+    if (i >= 0 && i <= 5) {
+      btn.innerText = (i + 1).toString();
+    } else {
+      btn.innerText = item[state.lang] || item.zh;
+    }
     btn.onclick = function() {
       builderCombo.push(i);
       renderBuilderCombo();
@@ -561,10 +565,10 @@ function renderBuilderCombo() {
   area.innerHTML = '';
   builderCombo.forEach((idx, i) => {
     const item = MUAY_THAI_TECHNIQUES[idx];
-    // 拳法顯示 key 數字，其餘顯示語言文字
+    // 拳法（前6個）顯示數字，其餘顯示語言名稱
     let label = '';
-    if (['1','2','3','4','5','6'].includes(item.key)) {
-      label = item.key;
+    if (idx >= 0 && idx <= 5) {
+      label = (idx + 1).toString();
     } else {
       label = item[lang] || item.zh;
     }
