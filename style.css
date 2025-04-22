@@ -249,20 +249,25 @@ main {
   margin-top: 18px;
   justify-content: center;
 }
+.builder-btn-row {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: 18px;
+}
 .builder-btn-row button, .combo-add button, .builder-action-btn {
   font-size: 1em !important;
-  padding: 0.4em 0.8em !important;
-  border-radius: 1.1em;
-  min-width: 60px;
+  padding: 0.45em 0.8em !important;
+  border-radius: var(--main-radius) !important;
+  min-width: 110px;
   max-width: 110px;
-  width: 100%;
+  width: 110px;
   margin: 0;
   text-align: center;
   box-sizing: border-box;
-}
-
-/* 強制覆蓋全域 button 樣式，避免 builder-action-btn 被覆蓋 */
-.builder-btn-row button, .combo-add button, .builder-action-btn {
   background: linear-gradient(90deg, var(--main-blue-light) 0%, var(--main-red) 100%) !important;
   font-weight: bold !important;
   letter-spacing: 0.03em !important;
@@ -270,12 +275,6 @@ main {
   filter: drop-shadow(0 0 6px var(--main-red)99) !important;
 }
 
-.builder-btn-row {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
   flex-wrap: nowrap;
 }
 

@@ -572,7 +572,7 @@ function renderBuilderCombo() {
     div.className = 'builder-combo-item combo-card';
     div.draggable = true;
     div.dataset.index = i;
-    div.innerHTML = `<span class='builder-tech-btn builder-combo-label'>${label}</span><button class="combo-delete" title="刪除" type="button">✕</button>`;
+    div.innerHTML = `<span class='builder-combo-label'>${label}</span><button class="combo-delete" title="刪除" type="button">✕</button>`;
     div.style.display = 'flex';
     div.style.alignItems = 'center';
     div.style.justifyContent = 'space-between';
