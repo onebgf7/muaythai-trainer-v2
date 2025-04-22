@@ -576,7 +576,7 @@ function renderBuilderCombo() {
     div.className = 'builder-combo-item';
     div.draggable = true;
     div.dataset.index = i;
-    div.innerHTML = `${label} <button class="combo-delete" title="刪除" type="button">✕</button><span class="combo-drag combo-index" title="拖曳排序">≡</span>`;
+    div.innerHTML = `${label} <button class="combo-delete" title="刪除" type="button">✕</button>`;
     // 刪除按鈕
     const delBtn = div.querySelector('.combo-delete');
     delBtn.onclick = function(e) {
