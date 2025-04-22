@@ -288,6 +288,26 @@ main {
   padding: 0.4em 0.8em !important;
 }
 
+.builder-section {
+  flex: 1 1 0;
+  min-width: 120px;
+  margin-bottom: 0.6em;
+}
+
+.builder-combo-box {
+  border: 2.5px solid var(--main-blue-light);
+  border-radius: 1.2em;
+  background: #181c2433;
+  padding: 1.1em 0.8em 1.1em 0.8em;
+  margin: 0.5em 0 0.8em 0;
+  min-height: 2.5em;
+  min-width: 160px;
+  box-shadow: 0 2px 14px var(--main-blue-light)22;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 /* 組合管理清單刪除鍵靠右 */
 .combo-card {
   display: flex;
