@@ -102,7 +102,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 38px;
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
 }
 .display-area {
   min-height: 2.2em;
@@ -219,15 +223,40 @@ main {
 .button-group, .builder-btn-row, .combo-add {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 420px;
-  align-items: stretch;
+  gap: 18px;
+  width: 70%;
+  max-width: 300px;
+  min-width: 160px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 .button-group button {
-  font-size: 1.4em;
-  padding: 1.1em 0;
+  font-size: 1.3em;
+  padding: 0.9em 0;
   border-radius: 1.2em;
+  width: 100%;
+  min-width: 120px;
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.builder-btn-row, .combo-add {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  justify-content: center;
+}
+.builder-btn-row button, .combo-add button {
+  font-size: 1.18em;
+  padding: 0.7em 0.7em;
+  border-radius: 1.1em;
+  min-width: 90px;
+  max-width: 150px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .builder-tech-btn {
@@ -301,8 +330,24 @@ button:hover, .builder-tech-btn:hover, .builder-action-btn:hover {
   display: none !important;
 }
 .builder-modal-enhanced {
+  max-width: 96vw;
   max-height: 78vh;
   overflow-y: auto;
+  padding: 1.2em 1.2em 1.5em 1.2em;
+  text-align: center;
+}
+
+#builder-title {
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.7em;
+}
+
+.builder-modal-enhanced .modal-close,
+#close-builder-modal {
+  font-size: 1.35em !important;
+  font-weight: bold;
 }
 .modal-content {
   background: var(--main-bg);
