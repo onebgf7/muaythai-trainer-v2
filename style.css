@@ -321,7 +321,7 @@ main {
   margin-top: 18px;
 }
 
-.builder-action-btn {
+#builder-modal .builder-action-btn {
   font-size: 1em !important;
   padding: 0.45em 0.8em !important;
   min-width: 110px;
@@ -350,7 +350,7 @@ main {
   display: inline-block;
 }
 
-.builder-combo-list, .builder-combo-item, .builder-combo-label {
+#builder-modal .builder-combo-list, #builder-modal .builder-combo-item, #builder-modal .builder-combo-label {
   background: none !important;
   box-shadow: none !important;
   list-style: none !important;
@@ -378,7 +378,7 @@ main {
   padding: 0;
 }
 
-.builder-action-btn {
+#builder-modal .builder-action-btn {
   font-size: 1em !important;
   padding: 0.45em 0.8em !important;
   min-width: 110px;
@@ -434,7 +434,7 @@ main {
   outline: none;
   padding: 0;
 }
-.builder-btn-row button, .combo-add button, .builder-action-btn {
+.builder-btn-row button, .combo-add button, #builder-modal .builder-action-btn {
   font-size: 1em !important;
   padding: 0.45em 0.8em !important;
   border-radius: var(--main-radius) !important;
@@ -507,7 +507,7 @@ main {
   border-radius: var(--main-radius);
 }
 
-button, .builder-tech-btn, .builder-action-btn {
+button, .builder-tech-btn, #builder-modal .builder-action-btn {
   font-size: 1em;
   padding: 0.95em 1.2em;
   border: none;
@@ -607,11 +607,11 @@ button:hover, .builder-tech-btn:hover, .builder-action-btn:hover {
 
 @media (max-width: 900px) {
   header { padding: 10px 12px; }
-  button, .builder-tech-btn, .builder-action-btn { font-size: 0.95em; padding: 0.4em 0.7em; }
+  button, .builder-tech-btn, #builder-modal .builder-action-btn { font-size: 0.95em; padding: 0.4em 0.7em; }
 }
 @media (max-width: 600px) {
   header { padding: 8px 6px; }
-  button, .builder-tech-btn, .builder-action-btn { font-size: 0.89em; padding: 0.32em 0.45em; }
+  button, .builder-tech-btn, #builder-modal .builder-action-btn { font-size: 0.89em; padding: 0.32em 0.45em; }
 .builder-combo-label {
   display: flex;
   align-items: center;
