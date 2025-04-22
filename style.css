@@ -250,8 +250,8 @@ main {
   justify-content: center;
 }
 .builder-btn-row button, .combo-add button, .builder-action-btn {
-  font-size: 1em;
-  padding: 0.35em 0.7em;
+  font-size: 1em !important;
+  padding: 0.4em 0.8em !important;
   border-radius: 1.1em;
   min-width: 60px;
   max-width: 110px;
@@ -259,6 +259,15 @@ main {
   margin: 0;
   text-align: center;
   box-sizing: border-box;
+}
+
+/* 強制覆蓋全域 button 樣式，避免 builder-action-btn 被覆蓋 */
+.builder-btn-row button, .combo-add button, .builder-action-btn {
+  background: linear-gradient(90deg, var(--main-blue-light) 0%, var(--main-red) 100%) !important;
+  font-weight: bold !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: 0 4px 18px var(--main-blue-light)22, 0 1px 4px #0004 !important;
+  filter: drop-shadow(0 0 6px var(--main-red)99) !important;
 }
 
 .builder-btn-row {
