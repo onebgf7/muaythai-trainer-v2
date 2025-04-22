@@ -106,12 +106,12 @@ main {
 
 .button-group {
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  margin: 32px 0 0 0;
   width: 80vw;
   max-width: 340px;
-  margin: 20px auto;
 }
 .button-group button, .combo-add button, #builder-modal .builder-action-btn {
   font-size: 1em;
@@ -337,6 +337,7 @@ body {
 
 /* Header */
 
+<<<<<<< HEAD
 :root {
   --main-blue: #3B82F6; /* 主藍色 */
   --main-blue-light: #60A5FA; /* 淺藍色 */
@@ -445,12 +446,12 @@ main {
 
 .button-group {
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  margin: 32px 0 0 0;
   width: 80vw;
   max-width: 340px;
-  margin: 20px auto;
 }
 .button-group button, .combo-add button, #builder-modal .builder-action-btn {
   font-size: 1em;
@@ -912,6 +913,14 @@ header {
   }
   .modal-content { min-width: 90vw; }
   .combo-card { font-size: 1em; padding: 8px 10px; }
+=======
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  margin: 32px 0 0 0;
+>>>>>>> a6be77a (主畫面按鈕由橫向改為直向排列)
 }
 
 
@@ -1025,12 +1034,12 @@ main {
 
 .button-group {
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  margin: 32px 0 0 0;
   width: 80vw;
   max-width: 340px;
-  margin: 20px auto;
 }
 .button-group button, .combo-add button, #builder-modal .builder-action-btn {
   font-size: 1em;
