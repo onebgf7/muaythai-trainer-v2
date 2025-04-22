@@ -220,17 +220,49 @@ main {
   padding: 0;
 }
 
-.button-group, .builder-btn-row, .combo-add {
+.button-group, .combo-add {
   display: flex;
-  flex-direction: column;
   gap: 18px;
-  width: 70%;
-  max-width: 300px;
-  min-width: 160px;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
+
+.builder-btn-row {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: 18px;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.builder-btn-row .builder-action-btn {
+  font-size: 1em !important;
+  padding: 0.45em 0.8em !important;
+  min-width: 110px;
+  max-width: 110px;
+  width: 110px;
+  border-radius: var(--main-radius) !important;
+  background: linear-gradient(90deg, var(--main-blue-light) 0%, var(--main-red) 100%) !important;
+  font-weight: bold !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: 0 4px 18px var(--main-blue-light)22, 0 1px 4px #0004 !important;
+  filter: drop-shadow(0 0 6px var(--main-red)99) !important;
+  white-space: nowrap;
+  text-align: center;
+  margin: 0;
+}
+
+.builder-combo-list, .builder-combo-item, .builder-combo-label, .builder-btn-row, .builder-section, .builder-combo-box {
+  background: none !important;
+  box-shadow: none !important;
+  list-style: none !important;
+}
+
 .button-group button {
   font-size: 1.3em;
   padding: 0.9em 0;
