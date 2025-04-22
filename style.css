@@ -251,7 +251,7 @@ main {
 }
 .builder-btn-row button, .combo-add button, .builder-action-btn {
   font-size: 1em;
-  padding: 0.4em 0.8em;
+  padding: 0.35em 0.7em;
   border-radius: 1.1em;
   min-width: 60px;
   max-width: 110px;
@@ -259,6 +259,11 @@ main {
   margin: 0;
   text-align: center;
   box-sizing: border-box;
+}
+
+.builder-btn-row {
+  gap: 10px;
+  justify-content: center;
 }
 
 /* 組合管理清單刪除鍵靠右 */
