@@ -291,11 +291,7 @@ main {
   margin: 0;
 }
 
-.builder-combo-list, .builder-combo-item, .builder-combo-label, .builder-btn-row, .builder-section, .builder-combo-box {
-  background: none !important;
-  box-shadow: none !important;
-  list-style: none !important;
-}
+
 
 .button-group button {
   font-size: 1.3em;
