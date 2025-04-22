@@ -1,4 +1,315 @@
 :root {
+  --main-blue: #3B82F6; /* 主藍色 */
+  --main-blue-light: #60A5FA; /* 淺藍色 */
+  --main-bg: #1A2526; /* 深藍灰背景 */
+  --main-text: #FFFFFF; /* 主文字色 */
+  --main-text-secondary: #D1D5DB; /* 次要文字色 */
+  --main-radius: 12px; /* 統一圓角 */
+  --main-shadow: 0 4px 18px rgba(59, 130, 246, 0.2), 0 1px 4px rgba(0, 0, 0, 0.1); /* 陰影 */
+}
+
+body {
+  background: var(--main-bg);
+  font-family: 'Noto Sans TC', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  color: var(--main-text);
+  margin: 0;
+  padding: 0 15px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  background: var(--main-bg);
+  color: var(--main-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--main-shadow);
+  border-bottom: 1px solid var(--main-blue-light);
+}
+
+.menu button {
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  color: var(--main-blue-light);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.menu button:hover {
+  color: var(--main-blue);
+}
+
+.logo svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.title {
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.05em;
+}
+
+.lang-voice {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lang-select, #voice-select {
+  background: var(--main-blue);
+  color: var(--main-text);
+  border: 1px solid var(--main-blue-light);
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-size: 0.9em;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 50px;
+  max-width: 100px;
+}
+.lang-select:focus, #voice-select:focus {
+  border: 1px solid var(--main-blue-light);
+  box-shadow: 0 0 8px var(--main-blue-light);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 8px;
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.display-area {
+  min-height: 1.2em;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: var(--main-text);
+  text-shadow: 0 2px 8px var(--main-blue-light), 0 1px 2px #0002;
+  animation: fadeIn 0.5s;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-width: 340px;
+  margin: 20px auto;
+}
+.button-group button, .combo-add button, #builder-modal .builder-action-btn {
+  font-size: 1em;
+  padding: 10px 0;
+  border-radius: var(--main-radius);
+  width: 110px;
+  background: linear-gradient(135deg, var(--main-blue) 0%, var(--main-blue-light) 100%);
+  color: var(--main-text);
+  border: none;
+  font-weight: 500;
+  box-shadow: var(--main-shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.button-group button:hover, .combo-add button:hover, #builder-modal .builder-action-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+.button-group button:active, .combo-add button:active, #builder-modal .builder-action-btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}
+
+.button-group .danger, .danger {
+  background: none;
+  background-color: #e63c2e;
+  color: #fff;
+  border: none;
+  transition: background 0.2s;
+}
+.button-group .danger:hover, .danger:hover {
+  background-color: #b91c1c;
+}
+
+.combo-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+.combo-tab {
+  background: var(--main-blue);
+  border: none;
+  color: var(--main-text);
+  font-weight: 500;
+  font-size: 1em;
+  padding: 8px 20px;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.combo-tab.active {
+  background: var(--main-blue-light);
+  color: var(--main-text);
+}
+
+#combo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  max-height: 40vh;
+  overflow-y: auto;
+  width: 100%;
+}
+.combo-card {
+  background: #23232B;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: var(--main-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1em;
+  box-shadow: var(--main-shadow);
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.combo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+.combo-index {
+  width: 32px;
+  height: 32px;
+  background: var(--main-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1em;
+  box-shadow: none;
+}
+.combo-delete {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  color: var(--main-text);
+  border: none;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.combo-delete:hover {
+  color: var(--main-blue-light);
+}
+.combo-add {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#combo-modal .modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(26, 37, 38, 0.7);
+  z-index: 200;
+}
+.modal {
+  display: none;
+}
+.modal:not(.hidden) {
+  display: flex;
+}
+.modal-content {
+  background: var(--main-bg);
+  border-radius: var(--main-radius);
+  border: 1px solid var(--main-blue-light);
+  box-shadow: var(--main-shadow);
+  color: var(--main-text);
+  padding: 20px;
+  min-width: 80vw;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#builder-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.builder-btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.builder-combo-label {
+  font-size: 0.9em;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--main-text);
+  font-weight: 500;
+  margin-right: 8px;
+}
+.builder-combo-box {
+  border: 1px solid var(--main-blue-light);
+  border-radius: var(--main-radius);
+  background: #23232B;
+  padding: 10px;
+  margin: 10px 0;
+  min-height: 40px;
+  box-shadow: var(--main-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  header { padding: 8px 10px; }
+  .logo svg { width: 32px; height: 32px; }
+  .title { font-size: 1.2em; }
+  .button-group button, .combo-add button, #builder-modal .builder-action-btn {
+    font-size: 0.9em;
+    padding: 8px 0;
+    width: 100px;
+  }
+  .modal-content { min-width: 90vw; }
+  .combo-card { font-size: 1em; padding: 8px 10px; }
+}
+
   --main-red: #e63c2e;
   --main-blue: #1a237e;
   --main-blue-light: #283593;
@@ -26,9 +337,898 @@ body {
 
 /* Header */
 
+:root {
+  --main-blue: #3B82F6; /* 主藍色 */
+  --main-blue-light: #60A5FA; /* 淺藍色 */
+  --main-bg: #1A2526; /* 深藍灰背景 */
+  --main-text: #FFFFFF; /* 主文字色 */
+  --main-text-secondary: #D1D5DB; /* 次要文字色 */
+  --main-radius: 12px; /* 統一圓角 */
+  --main-shadow: 0 4px 18px rgba(59, 130, 246, 0.2), 0 1px 4px rgba(0, 0, 0, 0.1); /* 陰影 */
+}
+
+body {
+  background: var(--main-bg);
+  font-family: 'Noto Sans TC', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  color: var(--main-text);
+  margin: 0;
+  padding: 0 15px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  background: var(--main-bg);
+  color: var(--main-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--main-shadow);
+  border-bottom: 1px solid var(--main-blue-light);
+}
+
+.menu button {
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  color: var(--main-blue-light);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.menu button:hover {
+  color: var(--main-blue);
+}
+
+.logo svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.title {
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.05em;
+}
+
+.lang-voice {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lang-select, #voice-select {
+  background: var(--main-blue);
+  color: var(--main-text);
+  border: 1px solid var(--main-blue-light);
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-size: 0.9em;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 50px;
+  max-width: 100px;
+}
+.lang-select:focus, #voice-select:focus {
+  border: 1px solid var(--main-blue-light);
+  box-shadow: 0 0 8px var(--main-blue-light);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 8px;
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.display-area {
+  min-height: 1.2em;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: var(--main-text);
+  text-shadow: 0 2px 8px var(--main-blue-light), 0 1px 2px #0002;
+  animation: fadeIn 0.5s;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-width: 340px;
+  margin: 20px auto;
+}
+.button-group button, .combo-add button, #builder-modal .builder-action-btn {
+  font-size: 1em;
+  padding: 10px 0;
+  border-radius: var(--main-radius);
+  width: 110px;
+  background: linear-gradient(135deg, var(--main-blue) 0%, var(--main-blue-light) 100%);
+  color: var(--main-text);
+  border: none;
+  font-weight: 500;
+  box-shadow: var(--main-shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.button-group button:hover, .combo-add button:hover, #builder-modal .builder-action-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+.button-group button:active, .combo-add button:active, #builder-modal .builder-action-btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}
+
+.button-group .danger, .danger {
+  background: none;
+  background-color: #e63c2e;
+  color: #fff;
+  border: none;
+  transition: background 0.2s;
+}
+.button-group .danger:hover, .danger:hover {
+  background-color: #b91c1c;
+}
+
+.combo-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+.combo-tab {
+  background: var(--main-blue);
+  border: none;
+  color: var(--main-text);
+  font-weight: 500;
+  font-size: 1em;
+  padding: 8px 20px;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.combo-tab.active {
+  background: var(--main-blue-light);
+  color: var(--main-text);
+}
+
+#combo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  max-height: 40vh;
+  overflow-y: auto;
+  width: 100%;
+}
+.combo-card {
+  background: #23232B;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: var(--main-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1em;
+  box-shadow: var(--main-shadow);
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.combo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+.combo-index {
+  width: 32px;
+  height: 32px;
+  background: var(--main-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1em;
+  box-shadow: none;
+}
+.combo-delete {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  color: var(--main-text);
+  border: none;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.combo-delete:hover {
+  color: var(--main-blue-light);
+}
+.combo-add {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#combo-modal .modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(26, 37, 38, 0.7);
+  z-index: 200;
+}
+.modal {
+  display: none;
+}
+.modal:not(.hidden) {
+  display: flex;
+}
+.modal-content {
+  background: var(--main-bg);
+  border-radius: var(--main-radius);
+  border: 1px solid var(--main-blue-light);
+  box-shadow: var(--main-shadow);
+  color: var(--main-text);
+  padding: 20px;
+  min-width: 80vw;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#builder-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.builder-btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.builder-combo-label {
+  font-size: 0.9em;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--main-text);
+  font-weight: 500;
+  margin-right: 8px;
+}
+.builder-combo-box {
+  border: 1px solid var(--main-blue-light);
+  border-radius: var(--main-radius);
+  background: #23232B;
+  padding: 10px;
+  margin: 10px 0;
+  min-height: 40px;
+  box-shadow: var(--main-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  header { padding: 8px 10px; }
+  .logo svg { width: 32px; height: 32px; }
+  .title { font-size: 1.2em; }
+  .button-group button, .combo-add button, #builder-modal .builder-action-btn {
+    font-size: 0.9em;
+    padding: 8px 0;
+    width: 100px;
+  }
+  .modal-content { min-width: 90vw; }
+  .combo-card { font-size: 1em; padding: 8px 10px; }
+}
+
+  --main-blue: #3B82F6; /* 主藍色 */
+  --main-blue-light: #60A5FA; /* 淺藍色 */
+  --main-bg: #1A2526; /* 深藍灰背景 */
+  --main-text: #FFFFFF; /* 主文字色 */
+  --main-text-secondary: #D1D5DB; /* 次要文字色 */
+  --main-radius: 12px; /* 統一圓角 */
+  --main-shadow: 0 4px 18px rgba(59, 130, 246, 0.2), 0 1px 4px rgba(0, 0, 0, 0.1); /* 陰影 */
+}
+
+body {
+  background: var(--main-bg); /* 統一深藍灰背景 */
+  font-family: 'Noto Sans TC', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  color: var(--main-text);
+  margin: 0;
+  padding: 0 15px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+header {
+  background: var(--main-bg); /* 與主背景一致 */
+  color: var(--main-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--main-shadow);
+  border-bottom: 1px solid var(--main-blue-light); /* 細邊框 */
+}
+
+.menu button {
+  font-size: 1.5em; /* 稍微縮小 */
+  background: none;
+  border: none;
+  color: var(--main-blue-light);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.menu button:hover {
+  color: var(--main-blue);
+}
+
+.logo svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.title {
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.05em;
+}
+
+.lang-voice {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lang-select, #voice-select {
+  background: var(--main-blue);
+  color: var(--main-text);
+  border: 1px solid var(--main-blue-light);
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-size: 0.9em;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 50px;
+  max-width: 100px;
+}
+
+.lang-select:focus, #voice-select:focus {
+  border: 1px solid var(--main-blue-light);
+  box-shadow: 0 0 8px var(--main-blue-light);
+}
+#combo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  max-height: 40vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.combo-card {
+  background: #23232B; /* 單色深灰背景 */
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1em;
+  box-shadow: var(--main-shadow);
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.combo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+
+.combo-index {
+  width: 32px;
+  height: 32px;
+  background: var(--main-blue);
+  border-radius: 8px; /* 改為方形圓角 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1em;
+  box-shadow: none;
+}
+
+.combo-delete {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  color: var(--main-text);
+  border: none;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.combo-delete:hover {
+  color: var(--main-blue-light);
+}
+.combo-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.combo-tab {
+  background: var(--main-blue);
+  border: none;
+  color: var(--main-text);
+  font-weight: 500;
+  font-size: 1em;
+  padding: 8px 20px;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.combo-tab.active {
+  background: var(--main-blue-light);
+  color: var(--main-text);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 340px;
+  margin: 20px auto;
+}
+
+.button-group button, .combo-add button, #builder-modal .builder-action-btn {
+  font-size: 1em;
+  padding: 10px 0;
+  border-radius: 12px;
+  width: 110px;
+  background: linear-gradient(135deg, var(--main-blue) 0%, var(--main-blue-light) 100%);
+  color: var(--main-text);
+  border: none;
+  font-weight: 500;
+  box-shadow: var(--main-shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.button-group button:hover, .combo-add button:hover, #builder-modal .builder-action-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+
+.builder-btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.builder-combo-label {
+  font-size: 0.9em;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--main-text);
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.builder-combo-box {
+  border: 1px solid var(--main-blue-light);
+  border-radius: 12px;
+  background: #23232B;
+  padding: 10px;
+  margin: 10px 0;
+  min-height: 40px;
+  box-shadow: var(--main-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#builder-modal .modal-content {
+  background: var(--main-bg);
+  border-radius: 12px;
+  border: 1px solid var(--main-blue-light);
+  box-shadow: var(--main-shadow);
+  color: var(--main-text);
+  padding: 20px;
+  min-width: 80vw;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#builder-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+.button-group button:active, .combo-add button:active, #builder-modal .builder-action-btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}
+@media (max-width: 600px) {
+  header { padding: 8px 10px; }
+  .logo svg { width: 32px; height: 32px; }
+  .title { font-size: 1.2em; }
+  .button-group button, .combo-add button, #builder-modal .builder-action-btn {
+    font-size: 0.9em;
+    padding: 8px 0;
+    width: 100px;
+  }
+  .modal-content { min-width: 90vw; }
+  .combo-card { font-size: 1em; padding: 8px 10px; }
+}
+
+
 
 
 :root {
+  --main-blue: #3B82F6; /* 主藍色 */
+  --main-blue-light: #60A5FA; /* 淺藍色 */
+  --main-bg: #1A2526; /* 深藍灰背景 */
+  --main-text: #FFFFFF; /* 主文字色 */
+  --main-text-secondary: #D1D5DB; /* 次要文字色 */
+  --main-radius: 12px; /* 統一圓角 */
+  --main-shadow: 0 4px 18px rgba(59, 130, 246, 0.2), 0 1px 4px rgba(0, 0, 0, 0.1); /* 陰影 */
+}
+
+body {
+  background: var(--main-bg);
+  font-family: 'Noto Sans TC', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  color: var(--main-text);
+  margin: 0;
+  padding: 0 15px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  background: var(--main-bg);
+  color: var(--main-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--main-shadow);
+  border-bottom: 1px solid var(--main-blue-light);
+}
+
+.menu button {
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  color: var(--main-blue-light);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.menu button:hover {
+  color: var(--main-blue);
+}
+
+.logo svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.title {
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.05em;
+}
+
+.lang-voice {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lang-select, #voice-select {
+  background: var(--main-blue);
+  color: var(--main-text);
+  border: 1px solid var(--main-blue-light);
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-size: 0.9em;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 50px;
+  max-width: 100px;
+}
+.lang-select:focus, #voice-select:focus {
+  border: 1px solid var(--main-blue-light);
+  box-shadow: 0 0 8px var(--main-blue-light);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 8px;
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.display-area {
+  min-height: 1.2em;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: var(--main-text);
+  text-shadow: 0 2px 8px var(--main-blue-light), 0 1px 2px #0002;
+  animation: fadeIn 0.5s;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-width: 340px;
+  margin: 20px auto;
+}
+.button-group button, .combo-add button, #builder-modal .builder-action-btn {
+  font-size: 1em;
+  padding: 10px 0;
+  border-radius: var(--main-radius);
+  width: 110px;
+  background: linear-gradient(135deg, var(--main-blue) 0%, var(--main-blue-light) 100%);
+  color: var(--main-text);
+  border: none;
+  font-weight: 500;
+  box-shadow: var(--main-shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.button-group button:hover, .combo-add button:hover, #builder-modal .builder-action-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+.button-group button:active, .combo-add button:active, #builder-modal .builder-action-btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}
+
+.button-group .danger, .danger {
+  background: none;
+  background-color: #e63c2e;
+  color: #fff;
+  border: none;
+  transition: background 0.2s;
+}
+.button-group .danger:hover, .danger:hover {
+  background-color: #b91c1c;
+}
+
+.combo-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+.combo-tab {
+  background: var(--main-blue);
+  border: none;
+  color: var(--main-text);
+  font-weight: 500;
+  font-size: 1em;
+  padding: 8px 20px;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.combo-tab.active {
+  background: var(--main-blue-light);
+  color: var(--main-text);
+}
+
+#combo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  max-height: 40vh;
+  overflow-y: auto;
+  width: 100%;
+}
+.combo-card {
+  background: #23232B;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: var(--main-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1em;
+  box-shadow: var(--main-shadow);
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.combo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+}
+.combo-index {
+  width: 32px;
+  height: 32px;
+  background: var(--main-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-text);
+  font-weight: 600;
+  font-size: 1em;
+  box-shadow: none;
+}
+.combo-delete {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  color: var(--main-text);
+  border: none;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.combo-delete:hover {
+  color: var(--main-blue-light);
+}
+.combo-add {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#combo-modal .modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(26, 37, 38, 0.7);
+  z-index: 200;
+}
+.modal {
+  display: none;
+}
+.modal:not(.hidden) {
+  display: flex;
+}
+.modal-content {
+  background: var(--main-bg);
+  border-radius: var(--main-radius);
+  border: 1px solid var(--main-blue-light);
+  box-shadow: var(--main-shadow);
+  color: var(--main-text);
+  padding: 20px;
+  min-width: 80vw;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#builder-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.builder-btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.builder-combo-label {
+  font-size: 0.9em;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--main-text);
+  font-weight: 500;
+  margin-right: 8px;
+}
+.builder-combo-box {
+  border: 1px solid var(--main-blue-light);
+  border-radius: var(--main-radius);
+  background: #23232B;
+  padding: 10px;
+  margin: 10px 0;
+  min-height: 40px;
+  box-shadow: var(--main-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  header { padding: 8px 10px; }
+  .logo svg { width: 32px; height: 32px; }
+  .title { font-size: 1.2em; }
+  .button-group button, .combo-add button, #builder-modal .builder-action-btn {
+    font-size: 0.9em;
+    padding: 8px 0;
+    width: 100px;
+  }
+  .modal-content { min-width: 90vw; }
+  .combo-card { font-size: 1em; padding: 8px 10px; }
+}
+
   --main-red: #e63c2e;
   --main-blue: #1a237e;
   --main-blue-light: #283593;
