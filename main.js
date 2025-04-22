@@ -201,7 +201,7 @@ function renderUI() {
   document.getElementById('stop-btn').innerText = t.stop;
   document.getElementById('combo-list-title').innerText = t.comboList;
   
-  document.getElementById('combo-add-btn').innerText = t.add;
+  
   document.getElementById('close-combo-modal').innerText = t.modalClose;
   // 語言選單
   const langSel = document.getElementById('lang-select');
@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const btns = [
     ['open-combo-list', openComboModal],
     ['close-combo-modal', closeComboModal],
-    ['combo-add-btn', addCombo],
+    
     ['reaction-btn', startReactionTraining],
     ['combo-btn', startComboTraining],
     ['fullcombo-btn', startFullComboTraining],
@@ -479,12 +479,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   // 輸入 Enter 新增
   
-  if (comboInput) comboInput.addEventListener('keydown',e=>{
-    if(e.key==='Enter') {
-      console.log('輸入 Enter 新增');
-      addCombo();
-    }
-  });
+
 });
 
 // ========== 組合建立器 =============
