@@ -200,7 +200,7 @@ function renderUI() {
   document.getElementById('fullcombo-btn').innerText = t.full;
   document.getElementById('stop-btn').innerText = t.stop;
   document.getElementById('combo-list-title').innerText = t.comboList;
-  document.getElementById('combo-input').placeholder = t.comboPlaceholder;
+  
   document.getElementById('combo-add-btn').innerText = t.add;
   document.getElementById('close-combo-modal').innerText = t.modalClose;
   // 語言選單
@@ -271,7 +271,7 @@ function closeComboModal() {
 }
 function addCombo() {
   const t = LANGS[state.lang];
-  const input = document.getElementById('combo-input').value.trim();
+  
   if (state.comboTab === 'fist') {
     const arr = input.split(/\s+/).map(Number).filter(n=>n>=1&&n<=6);
     if (arr.length>0) {
@@ -282,7 +282,7 @@ function addCombo() {
       state.fistCombos.push(arr);
       saveCombos();
       renderComboList();
-      document.getElementById('combo-input').value = '';
+      
     } else {
       alert(t.comboInvalid);
     }
@@ -299,7 +299,7 @@ function addCombo() {
     state.fullCombos.push(input);
     saveCombos();
     renderComboList();
-    document.getElementById('combo-input').value = '';
+    
   }
 }
 function saveCombos() {
@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   });
   // 輸入 Enter 新增
-  const comboInput = document.getElementById('combo-input');
+  
   if (comboInput) comboInput.addEventListener('keydown',e=>{
     if(e.key==='Enter') {
       console.log('輸入 Enter 新增');
