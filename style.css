@@ -271,8 +271,21 @@ main {
 }
 
 .builder-btn-row {
+  display: flex;
+  flex-direction: row;
   gap: 10px;
   justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.builder-btn-row button {
+  white-space: nowrap;
+  flex: 1 1 0;
+  min-width: 90px;
+  max-width: 140px;
+  font-size: 1em !important;
+  padding: 0.4em 0.8em !important;
 }
 
 /* 組合管理清單刪除鍵靠右 */
