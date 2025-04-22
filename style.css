@@ -218,10 +218,16 @@ main {
 
 .button-group, .builder-btn-row, .combo-add {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 420px;
+  align-items: stretch;
+}
+.button-group button {
+  font-size: 1.4em;
+  padding: 1.1em 0;
+  border-radius: 1.2em;
 }
 
 .builder-tech-btn {
@@ -293,6 +299,10 @@ button:hover, .builder-tech-btn:hover, .builder-action-btn:hover {
 }
 .modal.hidden {
   display: none !important;
+}
+.builder-modal-enhanced {
+  max-height: 78vh;
+  overflow-y: auto;
 }
 .modal-content {
   background: var(--main-bg);
