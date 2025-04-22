@@ -315,14 +315,21 @@ main {
   justify-content: space-between;
   gap: 14px;
 }
-.combo-card .combo-delete {
-  margin-left: auto;
+
+.builder-combo-list {
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
 }
 
 .builder-tech-btn {
+  font-size: 1em;
+  padding: 0.4em 1em;
   min-width: 2.8em;
   min-height: 2.6em;
   margin: 0.18em 0.28em;
+  border-radius: var(--main-radius);
 }
 
 button, .builder-tech-btn, .builder-action-btn {
