@@ -232,7 +232,8 @@ function renderComboList() {
     const contentDiv = document.createElement('div');
     contentDiv.className = 'combo-content';
     if (Array.isArray(combo)) {
-      contentDiv.innerText = combo.join(' ');
+      // Fist combos: always show as numbers
+      contentDiv.innerText = combo.map(n => n >= 1 && n <= 6 ? n : n).join(' ');
     } else {
       contentDiv.innerText = combo;
     }
@@ -560,11 +561,18 @@ function renderBuilderCombo() {
   area.innerHTML = '';
   builderCombo.forEach((idx, i) => {
     const item = MUAY_THAI_TECHNIQUES[idx];
+    // 拳法顯示 key 數字，其餘顯示語言文字
+    let label = '';
+    if (['1','2','3','4','5','6'].includes(item.key)) {
+      label = item.key;
+    } else {
+      label = item[lang] || item.zh;
+    }
     const div = document.createElement('div');
     div.className = 'builder-combo-item';
     div.draggable = true;
     div.dataset.index = i;
-    div.innerHTML = `${item[lang]||item.zh} <button class="combo-delete" title="刪除" type="button">✕</button><span class="combo-drag" title="拖曳排序">≡</span>`;
+    div.innerHTML = `${label} <button class="combo-delete" title="刪除" type="button">✕</button><span class="combo-drag combo-index" title="拖曳排序">≡</span>`;
     // 刪除按鈕
     const delBtn = div.querySelector('.combo-delete');
     delBtn.onclick = function(e) {
