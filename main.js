@@ -568,7 +568,7 @@ function renderBuilderCombo() {
       label = item[lang] || item.zh;
     }
     const div = document.createElement('div');
-    div.className = 'builder-combo-item';
+    div.className = 'builder-combo-item combo-card';
     div.draggable = true;
     div.dataset.index = i;
     div.innerHTML = `<span class='builder-combo-label'>${label}</span><button class="combo-delete" title="刪除" type="button">✕</button>`;

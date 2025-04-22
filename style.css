@@ -244,19 +244,32 @@ main {
 
 .builder-btn-row, .combo-add {
   display: flex;
+  flex-direction: row;
   gap: 12px;
   margin-top: 18px;
   justify-content: center;
 }
-.builder-btn-row button, .combo-add button {
-  font-size: 1.18em;
-  padding: 0.7em 0.7em;
+.builder-btn-row button, .combo-add button, .builder-action-btn {
+  font-size: 1.1em;
+  padding: 0.6em 0.8em;
   border-radius: 1.1em;
   min-width: 90px;
   max-width: 150px;
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   text-align: center;
+  box-sizing: border-box;
+}
+
+/* 組合管理清單刪除鍵靠右 */
+.combo-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.combo-card .combo-delete {
+  margin-left: auto;
 }
 
 .builder-tech-btn {
@@ -379,6 +392,7 @@ button:hover, .builder-tech-btn:hover, .builder-action-btn:hover {
 }
 .builder-combo-item {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0.2em 0.5em 0.2em 0.5em;
@@ -387,10 +401,14 @@ button:hover, .builder-tech-btn:hover, .builder-action-btn:hover {
   background: none;
   border: none;
   box-shadow: none;
+  gap: 10px;
+}
+.builder-combo-item .combo-delete {
+  margin-left: auto;
 }
 @media (max-width: 600px) {
   .builder-combo-item {
-    font-size: 0.97em;
+    font-size: 1em;
     padding: 0.33em 0.7em;
     min-height: 28px;
     margin: 0 6px 8px 0;
