@@ -7,6 +7,14 @@
 }
 
 body {
+  background: #1A2526;
+  font-family: 'Noto Sans TC', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0 15px;
+}
   margin: 0;
   font-family: 'Segoe UI', 'Noto Sans TC', 'Arial', sans-serif;
   background: linear-gradient(135deg, var(--main-bg) 60%, var(--main-blue) 100%);
@@ -222,6 +230,15 @@ main {
 
 .button-group {
   display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-width: 340px;
+  margin: 20px auto;
+}
+  display: flex;
   flex-direction: column;
   gap: 18px;
   align-items: stretch;
@@ -373,6 +390,11 @@ main {
 }
 
 #builder-modal .builder-combo-list, #builder-modal .builder-combo-item, #builder-modal .builder-combo-label {
+  background: none;
+  box-shadow: none;
+  list-style: none;
+  margin-bottom: 20px;
+}
   background: none !important;
   box-shadow: none !important;
   list-style: none !important;
