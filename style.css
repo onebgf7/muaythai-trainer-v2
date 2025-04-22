@@ -102,17 +102,17 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 38px;
+  justify-content: flex-start;
+  margin-top: 8px;
   width: 100vw;
   min-height: 100vh;
   text-align: center;
 }
 .display-area {
-  min-height: 2.2em;
-  font-size: 1.5em;
+  min-height: 1.2em;
+  font-size: 1.3em;
   font-weight: bold;
-  margin-bottom: 1.2em;
+  margin-bottom: 0.8em;
   text-align: center;
   letter-spacing: 0.06em;
   color: #fff;
